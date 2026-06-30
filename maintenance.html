@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Under Maintenance — SPIN Project</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/spin_logo.jpeg" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fade-up 0.7s ease-out forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.5s; }
+
+    .countdown-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header matching main site -->
+  <div class="bg-white shadow-sm border-b border-gray-100">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-2.5 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="images/spin_logo.jpeg" alt="SPIN Project Logo" class="h-14 w-auto" />
+      </a>
+    </div>
+  </div>
+
+  <header class="bg-custom-green shadow">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 h-14 flex items-center">
+      <span class="text-white/80 text-sm font-medium tracking-wide">Scheduled Maintenance</span>
+    </div>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center px-4 py-16 md:py-24">
+    <div class="max-w-3xl w-full text-center">
+
+      <!-- Icon -->
+      <div class="animate-float mb-8">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-custom-green/10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-custom-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.66-5.66a4 4 0 015.66-5.66l5.66 5.66a4 4 0 01-5.66 5.66z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.42 9.17l-4.24 4.24" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 16.5l-3 3" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 21H5v-4" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="animate-fade-up delay-1 text-4xl md:text-5xl lg:text-6xl font-black text-green-900 leading-tight mb-4">
+        Site Under Maintenance
+      </h1>
+
+      <p class="animate-fade-up delay-2 text-lg md:text-xl text-green-600 max-w-xl mx-auto mb-12">
+        We're performing scheduled upgrades to serve you better.
+        The site will be back shortly. We appreciate your patience.
+      </p>
+
+      <!-- Countdown -->
+      <div id="countdown" class="animate-fade-up delay-3 grid grid-cols-4 gap-3 md:gap-5 max-w-lg mx-auto mb-12">
+        <div class="countdown-card rounded-2xl p-3 md:p-5 shadow-sm shadow-gray-200">
+          <p id="days" class="text-3xl md:text-5xl font-black text-custom-green">00</p>
+          <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gray-400 mt-1">Days</p>
+        </div>
+        <div class="countdown-card rounded-2xl p-3 md:p-5 shadow-sm shadow-gray-200">
+          <p id="hours" class="text-3xl md:text-5xl font-black text-custom-green">00</p>
+          <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gray-400 mt-1">Hours</p>
+        </div>
+        <div class="countdown-card rounded-2xl p-3 md:p-5 shadow-sm shadow-gray-200">
+          <p id="minutes" class="text-3xl md:text-5xl font-black text-custom-green">00</p>
+          <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gray-400 mt-1">Minutes</p>
+        </div>
+        <div class="countdown-card rounded-2xl p-3 md:p-5 shadow-sm shadow-gray-200">
+          <p id="seconds" class="text-3xl md:text-5xl font-black text-custom-green">00</p>
+          <p class="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gray-400 mt-1">Seconds</p>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="animate-fade-up delay-3">
+        <p class="text-gray-500 text-sm mb-6">
+          Need immediate assistance? Reach out to us.
+        </p>
+        <a href="mailto:info@spinproject.ng"
+           class="inline-flex items-center gap-2 px-8 py-3.5 bg-custom-green text-white font-bold rounded-full shadow-lg hover:bg-green-700 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-custom-green/50">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.893-3.893 7.893 3.893a2 2 0 011.107 1.776v7.351a2 2 0 01-2 2H4a2 2 0 01-2-2v-7.351a2 2 0 011.107-1.776z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8l8 5 8-5" />
+          </svg>
+          Contact Support
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer matching main site -->
+  <footer class="bg-custom-dark-footer text-white">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-400 text-xs md:text-sm">
+          &copy; 2026 SPIN Project. All rights reserved. Supported by the World Bank.
+        </p>
+        <p class="text-gray-400 text-xs md:text-sm">
+          <a href="mailto:info@spinproject.ng" class="text-gray-400 hover:text-[#aaff33] transition">info@spinproject.ng</a>
+          <span class="mx-2">&bull;</span>
+          Developed by <a href="https://es2.com.ng" target="_blank" class="text-[#aaff33] hover:underline">ES2 LIMITED</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var target = new Date();
+      target.setDate(target.getDate() + 5);
+      target.setHours(23, 59, 59, 0);
+
+      var daysEl = document.getElementById('days');
+      var hoursEl = document.getElementById('hours');
+      var minutesEl = document.getElementById('minutes');
+      var secondsEl = document.getElementById('seconds');
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+      function tick() {
+        var diff = target.getTime() - new Date().getTime();
+        if (diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          secondsEl.textContent = '00';
+          return;
+        }
+        daysEl.textContent = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
+        hoursEl.textContent = pad(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+        minutesEl.textContent = pad(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+        secondsEl.textContent = pad(Math.floor((diff % (1000 * 60)) / 1000));
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+
+</body>
+</html>

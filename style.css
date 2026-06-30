@@ -1,0 +1,107 @@
+        /* Define the custom font and base background */
+        html { font-size: 15px; }
+@media (min-width: 1024px) { html { font-size: 15px; } }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background-color: #f7f9fb;
+            
+        }
+        /* Custom green for the main navigation bar - Set to a darker emerald: #008C5A */
+        .bg-custom-green {
+            background-color: #008C5A; 
+        }
+        /* Custom green for highlighting text in the white slider */
+        .text-custom-green {
+            color: #008C5A;
+        }
+        /* Custom lime green for the primary button */
+        .bg-custom-lime {
+            background-color: #aaff33;
+        }
+        /* Custom strong blue for the impact section */
+        .bg-custom-blue {
+            background-color: #0066cc; /* A bright, vibrant blue */
+        }
+        /* Custom dark blue for the Why It Matters section */
+        .bg-custom-dark-blue {
+            background-color: #1a237e; /* A deep, rich blue */
+        }
+        /* Custom color for the Footer background - Near Black */
+        .bg-custom-dark-footer {
+            background-color: #111111; 
+        }
+
+
+        /* Styles for the continuous sliding animation (Goal Slider) */
+        @keyframes slide {
+            /* Start: Show 1st slide (translate 0%) */
+            0%, 25% { transform: translateX(0%); }
+
+            /* Transition to 2nd slide */
+            30% { transform: translateX(-25%); }
+            /* Hold 2nd slide */
+            50%, 55% { transform: translateX(-25%); }
+
+            /* Transition to 3rd slide */
+            60% { transform: translateX(-50%); }
+            /* Hold 3rd slide */
+            80%, 85% { transform: translateX(-50%); }
+
+            /* Transition to Duplicate 1st slide (for seamless loop) */
+            90% { transform: translateX(-75%); }
+            /* Hold Duplicate 1st slide briefly before instant reset */
+            95% { transform: translateX(-75%); }
+
+            /* Instant reset back to the 1st slide */
+            100% { transform: translateX(0%); }
+        }
+
+        .slider-track {
+            display: flex;
+            width: 400%; /* 4 slides * 100% width each */
+            animation: slide 15s infinite ease-in-out; 
+        }
+
+        .slide-item {
+            width: 25%;
+            flex-shrink: 0;
+        }
+
+        .slider-container {
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+
+        /* Initial Collapsed State for Search Input */
+        .search-collapsed {
+            width: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            opacity: 0 !important;
+        }
+        /* Expanded State for Search Input */
+        .search-expanded {
+            width: 16rem !important; /* w-64 */
+            padding-left: 1rem !important; /* pl-4 */
+            padding-right: 2.5rem !important; /* pr-10 (to make space for the icon) */
+            opacity: 1 !important;
+        }
+        .icon-in-input {
+            right: 0.25rem; 
+            color: #6b7280; 
+        }
+        .fade-enter { opacity: 0; transition: opacity 0.5s ease; }
+        .fade-enter-active { opacity: 1; }
+
+        /* Custom Colors for Core Objectives */
+        .text-objective-blue { color: #1e3a8a; } 
+        .bg-objective-blue-10 { background-color: rgba(30, 58, 138, 0.1); }
+        .text-objective-green { color: #15803d; } 
+        .bg-objective-green-10 { background-color: rgba(21, 128, 61, 0.1); }
+        .text-objective-orange { color: #ea580c; } 
+        .bg-objective-orange-10 { background-color: rgba(234, 88, 12, 0.1); }
+        .text-objective-pink { color: #db2777; } 
+        .bg-objective-pink-10 { background-color: rgba(219, 39, 119, 0.1); }

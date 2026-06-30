@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPIN — GRM Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/spin_logo.jpeg" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .bg-custom-green  { background-color: #008C5A; }
+    .text-custom-green { color: #008C5A; }
+    #login-screen  { display: flex; }
+    #admin-screen  { display: none; }
+    .badge-open     { background:#fef3c7; color:#92400e; }
+    .badge-progress { background:#dbeafe; color:#1e40af; }
+    .badge-closed   { background:#d1fae5; color:#065f46; }
+    .badge-referred { background:#ede9fe; color:#5b21b6; }
+    /* Modal */
+    #edit-modal.hidden { display:none; }
+  </style>
+</head>
+<body class="bg-gray-100 antialiased text-gray-900">
+
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div id="login-screen" class="min-h-screen items-center justify-center px-4">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <img src="images/spin_logo.jpeg" alt="SPIN" class="h-16 w-auto mx-auto mb-4 rounded-lg" onerror="this.style.display='none'">
+        <h1 class="text-2xl font-extrabold text-gray-900">SPIN Project</h1>
+        <p class="text-gray-500 text-sm mt-1">Grievance Redress — Admin Dashboard</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+        <h2 class="text-lg font-bold text-gray-800 mb-6">Sign In</h2>
+        <div class="space-y-4">
+          <div>
+            <label for="login-user" class="block text-sm font-semibold text-gray-700 mb-1">Username</label>
+            <input id="login-user" type="text" autocomplete="username" placeholder="Enter username"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]" />
+          </div>
+          <div>
+            <label for="login-pass" class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+            <input id="login-pass" type="password" autocomplete="current-password" placeholder="Enter password"
+                   class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]" />
+          </div>
+          <p id="login-error" class="hidden text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5"></p>
+          <button id="login-btn"
+                  class="w-full bg-[#008C5A] hover:bg-[#006e47] text-white font-bold py-3 rounded-xl transition text-sm focus:outline-none focus:ring-4 focus:ring-[#008C5A]/40 mt-2">
+            Sign In
+          </button>
+        </div>
+        <p class="mt-6 text-xs text-gray-400 text-center">This portal is for authorised SPIN project staff only.</p>
+      </div>
+      <p class="text-center mt-6 text-xs text-gray-400">
+        <a href="/grievance" class="hover:text-[#008C5A] underline">← Back to public grievance page</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== ADMIN SCREEN ===== -->
+  <div id="admin-screen" class="min-h-screen">
+
+    <!-- Top bar -->
+    <header class="bg-custom-green text-white sticky top-0 z-40 shadow">
+      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 h-14 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="images/spin_logo.jpeg" alt="SPIN" class="h-8 w-auto rounded" onerror="this.style.display='none'">
+          <div>
+            <span class="font-extrabold text-base">SPIN Project</span>
+            <span class="text-white/60 text-xs ml-2 hidden sm:inline">GRM Admin Dashboard</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span id="admin-welcome" class="text-sm text-white/80 hidden sm:block"></span>
+          <button id="refresh-btn" title="Refresh data"
+                  class="p-2 rounded-lg hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-white/40">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </button>
+          <button id="logout-btn"
+                  class="text-sm bg-white/10 hover:bg-white/20 px-4 py-1.5 rounded-lg font-semibold transition focus:outline-none focus:ring-2 focus:ring-white/40">
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats bar -->
+    <div class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="text-center">
+          <p class="text-2xl font-extrabold text-gray-900" id="a-stat-total">—</p>
+          <p class="text-xs text-gray-500">Total</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl font-extrabold text-amber-600" id="a-stat-open">—</p>
+          <p class="text-xs text-gray-500">Open</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl font-extrabold text-blue-600" id="a-stat-progress">—</p>
+          <p class="text-xs text-gray-500">In Progress</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl font-extrabold text-emerald-600" id="a-stat-closed">—</p>
+          <p class="text-xs text-gray-500">Closed</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-8">
+
+      <!-- Toolbar -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-6 items-start sm:items-center justify-between">
+        <div>
+          <h2 class="text-xl font-extrabold text-gray-900">All Grievances</h2>
+          <p class="text-gray-500 text-sm mt-0.5">Click <strong>Update</strong> on any row to change its status or add remarks.</p>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <input id="a-search" type="search" placeholder="Search by ref, state, name…"
+                 class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] w-52" />
+          <select id="a-filter-status"
+                  class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
+            <option value="">All Statuses</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Closed">Closed</option>
+            <option value="Referred">Referred</option>
+          </select>
+          <button id="export-csv-btn"
+                  class="bg-gray-800 hover:bg-gray-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-gray-400">
+            Export CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div id="a-loading" class="text-center py-16 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto mb-3 text-gray-200 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        Loading grievances…
+      </div>
+
+      <!-- Table -->
+      <div id="a-table-wrap" class="hidden overflow-x-auto rounded-xl shadow border border-gray-200">
+        <table class="min-w-[1100px] w-full text-sm bg-white">
+          <thead>
+            <tr class="bg-[#008C5A] text-white text-xs uppercase tracking-wide">
+              <th class="px-3 py-3 text-left w-8">#</th>
+              <th class="px-3 py-3 text-left">Ref No.</th>
+              <th class="px-3 py-3 text-left">State</th>
+              <th class="px-3 py-3 text-left">Grievant</th>
+              <th class="px-3 py-3 text-left">Phone</th>
+              <th class="px-3 py-3 text-left">Nature</th>
+              <th class="px-3 py-3 text-left">Medium</th>
+              <th class="px-3 py-3 text-left">Date</th>
+              <th class="px-3 py-3 text-left">Status</th>
+              <th class="px-3 py-3 text-left">Remark</th>
+              <th class="px-3 py-3 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody id="a-tbody"></tbody>
+        </table>
+      </div>
+      <p id="a-empty" class="hidden text-center py-12 text-gray-400 text-sm">No grievances match your filter.</p>
+      <p id="a-row-count" class="text-xs text-gray-400 mt-2"></p>
+    </main>
+  </div>
+
+  <!-- ===== Edit Modal ===== -->
+  <div id="edit-modal" class="hidden fixed inset-0 z-[999] flex items-center justify-center p-4">
+    <div id="edit-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg">
+      <div class="bg-[#008C5A] text-white px-6 py-4 rounded-t-2xl flex items-center justify-between">
+        <div>
+          <h3 class="font-extrabold text-base">Update Grievance</h3>
+          <p id="edit-ref-label" class="text-white/70 text-xs mt-0.5"></p>
+        </div>
+        <button id="close-edit-btn" class="p-2 rounded-full hover:bg-white/10 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="p-6 space-y-4">
+        <!-- Read-only details summary -->
+        <div class="bg-gray-50 rounded-lg p-4 text-sm text-gray-600 space-y-1 border border-gray-100">
+          <p><span class="font-semibold text-gray-800">Grievant:</span> <span id="edit-name"></span></p>
+          <p><span class="font-semibold text-gray-800">Nature:</span> <span id="edit-nature"></span></p>
+          <p><span class="font-semibold text-gray-800">Details:</span> <span id="edit-details" class="italic"></span></p>
+        </div>
+        <!-- Status -->
+        <div>
+          <label for="edit-status" class="block text-sm font-semibold text-gray-700 mb-1">Status <span class="text-red-500">*</span></label>
+          <select id="edit-status" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Closed</option>
+            <option>Referred</option>
+          </select>
+        </div>
+        <!-- Action taken -->
+        <div>
+          <label for="edit-action" class="block text-sm font-semibold text-gray-700 mb-1">Action Taken</label>
+          <textarea id="edit-action" rows="3" placeholder="Describe the action taken…"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] resize-none"></textarea>
+        </div>
+        <!-- Remark -->
+        <div>
+          <label for="edit-remark" class="block text-sm font-semibold text-gray-700 mb-1">Remark</label>
+          <input id="edit-remark" type="text" placeholder="Any additional remark…"
+                 class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]" />
+        </div>
+        <p id="edit-error" class="hidden text-sm text-red-600 bg-red-50 rounded-lg px-4 py-2.5 border border-red-200"></p>
+        <div class="flex gap-3 pt-1">
+          <button id="save-edit-btn" class="flex-1 bg-[#008C5A] hover:bg-[#006e47] text-white font-bold py-3 rounded-xl transition text-sm focus:outline-none focus:ring-4 focus:ring-[#008C5A]/40">Save Changes</button>
+          <button id="cancel-edit-btn" class="px-5 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 text-sm font-semibold">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── CONFIG ────────────────────────────────────────────────
+    var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyj1alXQ67d5WHGDWpG2T2XGZHna_R-SBTE-IcZhpgg_49gjHP21HfATZR22w3hzWvaIg/exec";
+
+    // ── STATE ─────────────────────────────────────────────────
+    var adminUser = "";
+    var adminPass = "";
+    var allRows   = [];
+    var editTarget = null; // grievance number being edited
+
+    // ── LOGIN ─────────────────────────────────────────────────
+    function doLogin() {
+      var user = document.getElementById("login-user").value.trim();
+      var pass = document.getElementById("login-pass").value;
+      var errEl = document.getElementById("login-error");
+      if (!user || !pass) { errEl.textContent = "Please enter username and password."; errEl.classList.remove("hidden"); return; }
+
+      var btn = document.getElementById("login-btn");
+      btn.disabled = true; btn.textContent = "Signing in…";
+
+      fetch(APPS_SCRIPT_URL + "?action=login&user=" + encodeURIComponent(user) + "&pass=" + encodeURIComponent(pass))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.success) {
+            adminUser = user; adminPass = pass;
+            document.getElementById("login-screen").style.display = "none";
+            document.getElementById("admin-screen").style.display = "block";
+            document.getElementById("admin-welcome").textContent = "Signed in as " + user;
+            loadAllGrievances();
+          } else {
+            errEl.textContent = "Invalid username or password. Please try again.";
+            errEl.classList.remove("hidden");
+          }
+        })
+        .catch(function() {
+          errEl.textContent = "Network error. Please check your connection.";
+          errEl.classList.remove("hidden");
+        })
+        .finally(function() { btn.disabled = false; btn.textContent = "Sign In"; });
+    }
+
+    document.getElementById("login-btn").addEventListener("click", doLogin);
+    document.getElementById("login-pass").addEventListener("keydown", function(e) { if (e.key === "Enter") doLogin(); });
+    document.getElementById("logout-btn").addEventListener("click", function() {
+      adminUser = ""; adminPass = "";
+      allRows = [];
+      document.getElementById("admin-screen").style.display = "none";
+      document.getElementById("login-screen").style.display = "flex";
+      document.getElementById("login-pass").value = "";
+    });
+
+    // ── LOAD ALL GRIEVANCES ────────────────────────────────────
+    function loadAllGrievances() {
+      document.getElementById("a-loading").classList.remove("hidden");
+      document.getElementById("a-table-wrap").classList.add("hidden");
+      document.getElementById("a-empty").classList.add("hidden");
+
+      fetch(APPS_SCRIPT_URL + "?action=getAll&user=" + encodeURIComponent(adminUser) + "&pass=" + encodeURIComponent(adminPass))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          document.getElementById("a-loading").classList.add("hidden");
+          if (data.success) {
+            allRows = data.data || [];
+            updateStats();
+            applyFilters();
+          } else {
+            alert("Error loading data: " + (data.error || "Unknown error"));
+          }
+        })
+        .catch(function() {
+          document.getElementById("a-loading").classList.add("hidden");
+          alert("Network error loading grievances.");
+        });
+    }
+
+    document.getElementById("refresh-btn").addEventListener("click", loadAllGrievances);
+
+    // ── STATS ─────────────────────────────────────────────────
+    function updateStats() {
+      var total   = allRows.length;
+      var open    = allRows.filter(function(r) { return (r["Status (Open/In Progress/Closed)"]||"open").toLowerCase() === "open"; }).length;
+      var prog    = allRows.filter(function(r) { return (r["Status (Open/In Progress/Closed)"]||"").toLowerCase().includes("progress"); }).length;
+      var closed  = allRows.filter(function(r) { return (r["Status (Open/In Progress/Closed)"]||"").toLowerCase() === "closed"; }).length;
+      document.getElementById("a-stat-total").textContent   = total;
+      document.getElementById("a-stat-open").textContent    = open;
+      document.getElementById("a-stat-progress").textContent= prog;
+      document.getElementById("a-stat-closed").textContent  = closed;
+    }
+
+    // ── FILTERS ────────────────────────────────────────────────
+    document.getElementById("a-search").addEventListener("input", applyFilters);
+    document.getElementById("a-filter-status").addEventListener("change", applyFilters);
+
+    function applyFilters() {
+      var q       = document.getElementById("a-search").value.toLowerCase();
+      var status  = document.getElementById("a-filter-status").value.toLowerCase();
+      var filtered = allRows.filter(function(r) {
+        var matchQ = !q ||
+          (r["Grievance No."]||"").toLowerCase().includes(q) ||
+          (r["Name of State"]||"").toLowerCase().includes(q) ||
+          (r["Name of Grievant"]||"").toLowerCase().includes(q) ||
+          (r["Nature of Grievance"]||"").toLowerCase().includes(q);
+        var matchS = !status || (r["Status (Open/In Progress/Closed)"]||"open").toLowerCase() === status;
+        return matchQ && matchS;
+      });
+      renderAdminTable(filtered);
+    }
+
+    // ── RENDER TABLE ───────────────────────────────────────────
+    function statusBadge(s) {
+      var lower = (s||"open").toLowerCase();
+      var cls   = lower==="closed"?"badge-closed":lower.includes("progress")?"badge-progress":lower==="referred"?"badge-referred":"badge-open";
+      return '<span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold '+cls+'">'+(s||"Open")+'</span>';
+    }
+
+    function renderAdminTable(rows) {
+      var tbody = document.getElementById("a-tbody");
+      var wrap  = document.getElementById("a-table-wrap");
+      var empty = document.getElementById("a-empty");
+      var count = document.getElementById("a-row-count");
+
+      if (!rows.length) {
+        wrap.classList.add("hidden"); empty.classList.remove("hidden");
+        count.textContent = "0 records";
+        return;
+      }
+      empty.classList.add("hidden"); wrap.classList.remove("hidden");
+      count.textContent = rows.length + " record" + (rows.length===1?"":"s");
+
+      tbody.innerHTML = rows.map(function(r, i) {
+        var date = r["Date & Time"] ? new Date(r["Date & Time"]).toLocaleDateString("en-NG",{day:"2-digit",month:"short",year:"numeric"}) : "—";
+        var ref  = r["Grievance No."] || "";
+        var remark = (r["Remark"]||"").substring(0,40) + ((r["Remark"]||"").length>40?"…":"");
+        return '<tr class="'+(i%2===0?"bg-white":"bg-gray-50")+' border-b border-gray-100 hover:bg-green-50/30 transition text-sm">' +
+          '<td class="px-3 py-2.5 text-gray-400">'+(r["S/N"]||i+1)+'</td>' +
+          '<td class="px-3 py-2.5 font-mono text-xs text-[#008C5A] font-semibold whitespace-nowrap">'+ref+'</td>' +
+          '<td class="px-3 py-2.5 whitespace-nowrap">'+(r["Name of State"]||"—")+'</td>' +
+          '<td class="px-3 py-2.5 whitespace-nowrap">'+(r["Name of Grievant"]||"—")+'</td>' +
+          '<td class="px-3 py-2.5 text-gray-500 whitespace-nowrap">'+(r["Phone"]||"—")+'</td>' +
+          '<td class="px-3 py-2.5">'+(r["Nature of Grievance"]||"—")+'</td>' +
+          '<td class="px-3 py-2.5 text-gray-500">'+(r["Medium of Communication"]||"—")+'</td>' +
+          '<td class="px-3 py-2.5 text-gray-500 whitespace-nowrap">'+date+'</td>' +
+          '<td class="px-3 py-2.5">'+statusBadge(r["Status (Open/In Progress/Closed)"])+'</td>' +
+          '<td class="px-3 py-2.5 text-gray-500 max-w-xs truncate" title="'+(r["Remark"]||"")+'">'+remark+'</td>' +
+          '<td class="px-3 py-2.5 text-center">' +
+            '<button onclick="openEditModal(\''+ref+'\')" ' +
+              'class="bg-[#008C5A] hover:bg-[#006e47] text-white text-xs font-bold px-3 py-1.5 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-[#008C5A]/40">' +
+              'Update</button>' +
+          '</td>' +
+        '</tr>';
+      }).join("");
+    }
+
+    // ── EDIT MODAL ─────────────────────────────────────────────
+    function openEditModal(grievanceNo) {
+      var row = allRows.find(function(r) { return r["Grievance No."] === grievanceNo; });
+      if (!row) return;
+      editTarget = grievanceNo;
+
+      document.getElementById("edit-ref-label").textContent = grievanceNo;
+      document.getElementById("edit-name").textContent    = row["Name of Grievant"] || "—";
+      document.getElementById("edit-nature").textContent  = row["Nature of Grievance"] || "—";
+      document.getElementById("edit-details").textContent = row["Detail of Grievance"] || "—";
+      document.getElementById("edit-status").value        = row["Status (Open/In Progress/Closed)"] || "Open";
+      document.getElementById("edit-action").value        = row["Action Taken and Date"] || "";
+      document.getElementById("edit-remark").value        = row["Remark"] || "";
+      document.getElementById("edit-error").classList.add("hidden");
+
+      document.getElementById("edit-modal").classList.remove("hidden");
+    }
+
+    function closeEditModal() {
+      document.getElementById("edit-modal").classList.add("hidden");
+      editTarget = null;
+    }
+
+    document.getElementById("close-edit-btn").addEventListener("click", closeEditModal);
+    document.getElementById("cancel-edit-btn").addEventListener("click", closeEditModal);
+    document.getElementById("edit-backdrop").addEventListener("click", closeEditModal);
+    document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeEditModal(); });
+
+    document.getElementById("save-edit-btn").addEventListener("click", function() {
+      if (!editTarget) return;
+      var status  = document.getElementById("edit-status").value;
+      var action  = document.getElementById("edit-action").value.trim();
+      var remark  = document.getElementById("edit-remark").value.trim();
+      var errEl   = document.getElementById("edit-error");
+      var btn     = document.getElementById("save-edit-btn");
+
+      btn.disabled = true; btn.textContent = "Saving…";
+
+      fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({
+          action: "updateStatus",
+          user: adminUser, pass: adminPass,
+          grievanceNo: editTarget,
+          status: status,
+          actionTaken: action,
+          remark: remark
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.success) {
+          closeEditModal();
+          loadAllGrievances();
+        } else {
+          errEl.textContent = "Save failed: " + (data.error || "Unknown error");
+          errEl.classList.remove("hidden");
+        }
+      })
+      .catch(function() {
+        errEl.textContent = "Network error. Please try again.";
+        errEl.classList.remove("hidden");
+      })
+      .finally(function() { btn.disabled = false; btn.textContent = "Save Changes"; });
+    });
+
+    // ── EXPORT CSV ─────────────────────────────────────────────
+    document.getElementById("export-csv-btn").addEventListener("click", function() {
+      if (!allRows.length) { alert("No data to export."); return; }
+      var headers = ["S/N","Grievance No.","Name of State","Date & Time","Name of Grievant","Phone","Email",
+                     "Medium of Communication","Nature of Grievance","Detail of Grievance",
+                     "Action Taken and Date","Status (Open/In Progress/Closed)","Remark"];
+      var csv = headers.join(",") + "\n" + allRows.map(function(r) {
+        return headers.map(function(h) {
+          var val = (r[h]||"").toString().replace(/"/g,'""');
+          return '"' + val + '"';
+        }).join(",");
+      }).join("\n");
+
+      var blob = new Blob([csv], {type:"text/csv"});
+      var a    = document.createElement("a");
+      a.href   = URL.createObjectURL(blob);
+      a.download = "SPIN_GRM_Log_" + new Date().toISOString().slice(0,10) + ".csv";
+      a.click();
+    });
+  </script>
+</body>
+</html>
