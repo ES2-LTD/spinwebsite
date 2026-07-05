@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SPIN Website
 
 Static website for the Sustainable Power and Irrigation for Nigeria (SPIN) Project.
@@ -74,3 +75,7 @@ Check that the hamburger opens, the page does not scroll sideways, tables remain
 - Update repeated navigation markup across all relevant pages when a menu item changes.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the participating-states sequence and contribution checklist.
+=======
+# spinwebsite
+SPIN WEBSITE
+>>>>>>> 7c9507ecc6cc3d519e4cfe9ec7c1722e257f92b7
