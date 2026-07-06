@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nasarawa State | SPIN</title>
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="../images/spin_logo.jpeg" />
   <link rel="shortcut icon" href="../images/spin_logo.jpeg" type="image/jpeg" />
@@ -19,9 +23,13 @@
   </script>
 </head>
 <body class="antialiased font-sans text-gray-900 bg-white">
+
+  <!-- Skip link -->
   <a href="#main" class="sr-only focus:not-sr-only absolute left-2 top-2 z-[999] rounded bg-white px-3 py-2 text-sm font-semibold shadow outline outline-2 outline-offset-2 outline-[#aaff33]">
     Skip to main content
   </a>
+
+  <!-- Top Info Bar -->
   <div class="bg-white shadow-sm border-b border-gray-100">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-2.5 flex items-center justify-between gap-4 text-sm">
       <a href="/" class="flex items-center gap-3 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">
@@ -53,6 +61,7 @@
       </div>
     </div>
   </div>
+
   <header class="bg-custom-green sticky top-0 z-50 shadow">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 h-14 relative flex items-center justify-end xl:grid" style="grid-template-columns: 1fr auto 1fr;">
       <div class="hidden xl:block"></div>
@@ -61,6 +70,7 @@
         <a href="/about" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">About us</a>
         <a href="/mandate" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Mandate</a>
         <a href="/advertisements" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Advertisements</a>
+        <a href="/news" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
         <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Participating States</a>
         <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
         <a href="/project" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
@@ -73,20 +83,26 @@
           <input id="search-input" type="search" inputmode="search" aria-label="Search site" placeholder="Search..."
                  class="h-10 text-sm bg-white rounded-full text-gray-800 border border-gray-200 shadow-inner px-4 pr-10 transition-all duration-300 ease-in-out absolute right-0 search-collapsed" />
           <button id="search-toggle" class="relative z-10 p-2 text-white hover:text-white/90 rounded-full focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-expanded="false" aria-controls="search-input" aria-label="Open search">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 10-14 0 7 7 0 0014 0z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 10-14 0 7 7 0 0014 0z"/>
+            </svg>
           </button>
         </div>
       </div>
       <button id="mobile-menu-button" class="xl:hidden text-white hover:text-white/90 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m0 6H4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m0 6H4"/>
+        </svg>
       </button>
     </div>
+
     <div id="mobile-menu" class="xl:hidden hidden border-t border-white/20 bg-custom-green/95 backdrop-blur">
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-3 space-y-1 text-white/95">
         <a href="/" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Home</a>
         <a href="/about" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">About us</a>
         <a href="/mandate" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Mandate</a>
         <a href="/advertisements" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Advertisements</a>
+        <a href="/news" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">News</a>
         <a href="/participating-states" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Participating States</a>
         <a href="/gallery" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Gallery</a>
         <a href="/project" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Projects</a>
@@ -96,6 +112,7 @@
       </div>
     </div>
   </header>
+
   <section class="relative w-full h-64 md:h-80 flex items-center justify-center bg-cover bg-center" style="background-image: url('../images/solar2.jpg');">
     <div class="absolute inset-0 bg-gradient-to-r from-green-900/95 to-green-800/70 mix-blend-multiply transition-opacity duration-700"></div>
     <div class="relative z-10 text-center px-4 sm:px-6 transform translate-y-0 opacity-100 transition-all duration-1000 ease-out">
@@ -114,12 +131,13 @@
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 space-y-16">
       <img src="../images/nasarawa.png" alt="Nasarawa State Map" class="w-full rounded-lg shadow-lg mb-8">
       <div class="space-y-6">
-        <p class="text-lg text-slate-600 leading-relaxed">Nasarawa State is upgrading its farming capabilities by taking part in the SPIN project. The state is implementing Model 1, focusing on a synergistic partnership with the Federal Government to rehabilitate a federal RBDA scheme. The Doma Irrigation scheme has been selected as the priority site for these interventions.</p>
+        Nasarawa State is upgrading its farming capabilities by taking part in the SPIN project. The state is implementing Model 1, focusing on a synergistic partnership with the Federal Government to rehabilitate a federal RBDA scheme. The Doma Irrigation scheme has been selected as the priority site for these interventions.
 
-        <p class="text-lg text-slate-600 leading-relaxed">The Doma Irrigation scheme is mapped at Latitude 8° 24'N and Longitude 8° 30'E. The state's assigned focal officers are directing the initial phases of the project, ensuring alignment with both local agricultural needs and federal standards.</p>
+The Doma Irrigation scheme is mapped at Latitude 8° 24'N and Longitude 8° 30'E. The state's assigned focal officers are directing the initial phases of the project, ensuring alignment with both local agricultural needs and federal standards.
       </div>
     </div>
   </main>
+
   <!-- Partners -->
     <section id="partners" class="py-24 bg-gray-50">
   <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 text-center">
@@ -158,7 +176,8 @@
     </div>
   </div>
 </section>
-  <footer class="bg-custom-dark-footer text-white">
+
+<footer class="bg-custom-dark-footer text-white">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-14">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 border-b border-white/10 pb-8 mb-8">
         <div>
@@ -189,9 +208,15 @@
         <div>
           <h4 class="text-base font-bold mb-3">Connect</h4>
           <div class="flex gap-3">
-            <a href="#" class="text-gray-300 hover:text-[#aaff33] rounded p-1 focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2 1.7-1.4 3-3.6 3.4-6.3-4-.5-8.2-2-10-5 0-1.4.3-2.8 1-4 3.7 4.5 9 6.2 14.5 4.5 0-1.4-.4-2.7-1.2-3.8z"/></svg></a>
-            <a href="#" class="text-gray-300 hover:text-[#aaff33] rounded p-1 focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-            <a href="#" class="text-gray-300 hover:text-[#aaff33] rounded p-1 focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="0.5"/></svg></a>
+            <a href="#" class="text-gray-300 hover:text-[#aaff33] rounded p-1 focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2 1.7-1.4 3-3.6 3.4-6.3-4-.5-8.2-2-10-5 0-1.4.3-2.8 1-4 3.7 4.5 9 6.2 14.5 4.5 0-1.4-.4-2.7-1.2-3.8z"/></svg>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-[#aaff33] rounded p-1 focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-[#aaff33] rounded p-1 focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="0.5"/></svg>
+            </a>
           </div>
           <p class="mt-4 text-xs text-gray-400">Email: <a href="mailto:info@spinproject.ng" class="hover:text-[#aaff33]">info@spinproject.ng</a></p>
         </div>
@@ -199,5 +224,41 @@
       <p class="text-center text-sm text-gray-400">&copy; 2025 SPIN Project. All rights reserved. Supported by the World Bank.<br> Developed by <a href="https://es2.com.ng" target="_blank" class="text-[#aaff33] hover:underline">ES2 LIMITED</a></p>
     </div>
   </footer>
+
+  <script>
+
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const menuPanel = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+      menuPanel.classList.toggle('hidden');
+    });
+
+    const sInput = document.getElementById('search-input');
+    const sToggle = document.getElementById('search-toggle');
+    function expandSearch() {
+      sInput.classList.remove('search-collapsed');
+      sInput.classList.add('search-expanded');
+      sToggle.setAttribute('aria-expanded', 'true');
+      sToggle.setAttribute('aria-label', 'Close search');
+      setTimeout(() => sInput.focus(), 150);
+    }
+    function collapseSearch() {
+      if (sInput.value.trim() !== '') return;
+      sInput.classList.remove('search-expanded');
+      sInput.classList.add('search-collapsed');
+      sToggle.setAttribute('aria-expanded', 'false');
+      sToggle.setAttribute('aria-label', 'Open search');
+    }
+    sToggle?.addEventListener('click', () => {
+      if (sInput.classList.contains('search-collapsed')) {
+        expandSearch();
+      } else {
+        collapseSearch();
+      }
+    });
+    sInput?.addEventListener('blur', collapseSearch);
+  </script>
 </body>
 </html>
