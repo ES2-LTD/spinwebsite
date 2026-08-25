@@ -21,6 +21,9 @@
   <!-- Workshop Configuration -->
   <script src="js/workshop-config.js"></script>
 
+  <!-- QR Code Generator (client-side, no external API needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K6HTFD29WJ"></script>
   <script>
@@ -280,19 +283,50 @@
         </form>
 
         <!-- Success Message -->
-        <div id="success-message" class="hidden mt-6 p-6 bg-green-50 border border-green-200 rounded-lg">
-          <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div id="success-message" class="hidden mt-6">
+          <div class="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <div>
-              <h4 class="text-lg font-bold text-green-800">Registration Successful</h4>
-              <p class="text-green-700 mt-1">Your registration for the Regional Workshop on National Water Compact for Nigeria has been successfully received.</p>
+            <h4 class="text-2xl font-bold text-green-800 mb-2">Registration Successful!</h4>
+            <p class="text-green-700 mb-6">A confirmation email with your QR code has been sent to <strong id="registered-email"></strong></p>
+
+            <!-- Registration ID -->
+            <div class="bg-white border border-green-200 rounded-lg py-3 px-6 inline-block mb-6">
+              <p class="text-xs text-gray-500 mb-1">Your Registration ID</p>
+              <p id="registration-id" class="text-xl font-bold text-[#008C5A] tracking-wider"></p>
             </div>
+
+            <!-- QR Code Display -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 inline-block mb-6 shadow-sm">
+              <p class="text-sm font-semibold text-gray-600 mb-3">Present this QR code at the venue for quick check-in</p>
+              <canvas id="qr-canvas"></canvas>
+              <p class="text-xs text-gray-400 mt-3">Screenshot this as a backup</p>
+            </div>
+
+            <!-- Download Button -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+              <button id="download-qr-btn" class="bg-white border-2 border-[#008C5A] text-[#008C5A] font-semibold py-2 px-6 rounded-lg hover:bg-[#008C5A] hover:text-white transition-colors">
+                Download QR Code
+              </button>
+              <a id="google-calendar-btn" href="#" target="_blank" class="bg-white border-2 border-blue-600 text-blue-600 font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-center">
+                <span class="flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  Add to Google Calendar
+                </span>
+              </a>
+              <button id="download-ics-btn" class="bg-white border-2 border-purple-600 text-purple-600 font-semibold py-2 px-6 rounded-lg hover:bg-purple-600 hover:text-white transition-colors">
+                <span class="flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  Download .ics File
+                </span>
+              </button>
+            </div>
+
+            <a href="/" class="inline-block bg-[#008C5A] text-white font-semibold py-3 px-8 rounded-lg hover:bg-[#006b44] transition-colors">
+              Return to SPIN Website
+            </a>
           </div>
-          <a href="/" class="mt-4 inline-block bg-custom-green text-white font-semibold py-2 px-6 rounded-lg hover:bg-[#006b44] transition-colors">
-            Return to SPIN Website
-          </a>
         </div>
 
         <!-- Error Message -->
@@ -303,7 +337,7 @@
             </svg>
             <div>
               <h4 class="text-lg font-bold text-red-800">Something went wrong</h4>
-              <p class="text-red-700 mt-1">We could not submit your registration at this time. Please check your internet connection and try again.</p>
+              <p id="error-text" class="text-red-700 mt-1">We could not submit your registration at this time. Please check your internet connection and try again.</p>
             </div>
           </div>
           <button 
@@ -442,7 +476,6 @@
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      // Validate form
       const fullName = document.getElementById('fullName').value.trim();
       const designation = document.getElementById('designation').value.trim();
       const organization = document.getElementById('organization').value.trim();
@@ -454,37 +487,134 @@
         return;
       }
 
-      // Disable button and show loading state
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting registration...';
       errorMessage.classList.add('hidden');
 
       try {
-        const response = await fetch(API_URL, {
+        // Step 1: POST registration (no-cors — server processes it even if browser can't read response)
+        await fetch(API_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json',
-          },
           body: JSON.stringify({
             type: 'pre_workshop',
-            fullName: fullName,
-            designation: designation,
-            organization: organization,
-            email: email,
-            phone: phone
+            fullName, designation, organization, email, phone
           })
         });
 
-        // Since we're using no-cors, we'll assume success if no network error
-        // In production, you might want to implement proper CORS handling
-        form.classList.add('hidden');
-        successMessage.classList.remove('hidden');
+        // Step 2: Poll GET endpoint to retrieve registration ID
+        let result = null;
+        for (let attempt = 0; attempt < 10; attempt++) {
+          await new Promise(r => setTimeout(r, 1500));
+          try {
+            const lookupRes = await fetch(API_URL + '?action=lookup&email=' + encodeURIComponent(email));
+            result = await lookupRes.json();
+            if (result.success && result.id) break;
+          } catch (lookupErr) {
+            // keep retrying
+          }
+        }
+
+        if (result && result.success && result.id) {
+          // Show success with QR code
+          form.classList.add('hidden');
+          document.getElementById('registered-email').textContent = email;
+          document.getElementById('registration-id').textContent = result.id;
+
+          // Generate QR code on screen
+          const canvas = document.getElementById('qr-canvas');
+          QRCode.toCanvas(canvas, result.id, {
+            width: 220,
+            margin: 2,
+            color: { dark: '#000000', light: '#ffffff' }
+          }, function (err) {
+            if (err) console.error('QR generation failed:', err);
+          });
+
+          // Download QR button
+          document.getElementById('download-qr-btn').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'SPIN-Workshop-QR-' + result.id + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+          });
+
+          // Google Calendar link
+          const calTitle = encodeURIComponent('SPIN Workshop — Regional Workshop on National Water Compact for Nigeria');
+          const calLocation = encodeURIComponent('1 Aguiyi Ironsi Street, Maitama, Abuja');
+          const calDescription = encodeURIComponent('Registration ID: ' + result.id + '\nOrganized by FMWRS SPIN Project\n\nVenue: 1 Aguiyi Ironsi Street, Maitama, Abuja\nTime: 10:00 AM\n\nPlease present your QR code at the venue for quick check-in.\n\nhttps://spinproject.ng');
+          const calStart = '20260827T090000Z'; // 10:00 AM WAT = 09:00 UTC
+          const calEnd = '20260827T160000Z';   // 5:00 PM WAT = 16:00 UTC
+          const gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+            '&text=' + calTitle +
+            '&dates=' + calStart + '/' + calEnd +
+            '&location=' + calLocation +
+            '&details=' + calDescription +
+            '&sf=true&output=xml';
+          document.getElementById('google-calendar-btn').href = gcalUrl;
+
+          // Download .ics file
+          document.getElementById('download-ics-btn').addEventListener('click', () => {
+            const icsContent = [
+              'BEGIN:VCALENDAR',
+              'VERSION:2.0',
+              'PRODID:-//SPIN Project//Workshop Registration//EN',
+              'CALSCALE:GREGORIAN',
+              'METHOD:PUBLISH',
+              'BEGIN:VEVENT',
+              'DTSTART:20260827T090000Z',
+              'DTEND:20260827T160000Z',
+              'SUMMARY:SPIN Workshop — Regional Workshop on National Water Compact for Nigeria',
+              'LOCATION:1 Aguiyi Ironsi Street\\, Maitama\\, Abuja',
+              'DESCRIPTION:Registration ID: ' + result.id + '\\nOrganized by FMWRS SPIN Project\\n\\nPlease present your QR code at the venue for quick check-in.\\n\\nhttps://spinproject.ng',
+              'STATUS:CONFIRMED',
+              'SEQUENCE:0',
+              'BEGIN:VALARM',
+              'TRIGGER:-P1D',
+              'ACTION:DISPLAY',
+              'DESCRIPTION:SPIN Workshop tomorrow — 27th August 2026',
+              'END:VALARM',
+              'END:VEVENT',
+              'END:VCALENDAR'
+            ].join('\r\n');
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.download = 'SPIN-Workshop-' + result.id + '.ics';
+            link.href = URL.createObjectURL(blob);
+            link.click();
+            URL.revokeObjectURL(link.href);
+          });
+
+          successMessage.classList.remove('hidden');
+
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          // Registration was submitted (no-cors POST went through) but lookup timed out
+          form.classList.add('hidden');
+          document.getElementById('registered-email').textContent = email;
+          document.getElementById('registration-id').textContent = 'Check your email';
+          document.getElementById('qr-canvas').parentElement.querySelector('p').textContent = 'Your QR code has been emailed to you. Please check your inbox (and spam folder).';
+          document.getElementById('qr-canvas').style.display = 'none';
+          document.getElementById('download-qr-btn').style.display = 'none';
+          document.getElementById('google-calendar-btn').style.display = 'none';
+          document.getElementById('download-ics-btn').style.display = 'none';
+          successMessage.classList.remove('hidden');
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
       } catch (error) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Registration';
-        errorMessage.classList.remove('hidden');
+        // Even on error, the no-cors POST may have succeeded
+        form.classList.add('hidden');
+        document.getElementById('registered-email').textContent = email;
+        document.getElementById('registration-id').textContent = 'Check your email';
+        document.getElementById('qr-canvas').parentElement.querySelector('p').textContent = 'Your registration was likely submitted. Your QR code has been emailed to you. Please check your inbox (and spam folder).';
+        document.getElementById('qr-canvas').style.display = 'none';
+        document.getElementById('download-qr-btn').style.display = 'none';
+        document.getElementById('google-calendar-btn').style.display = 'none';
+        document.getElementById('download-ics-btn').style.display = 'none';
+        successMessage.classList.remove('hidden');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   </script>

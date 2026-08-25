@@ -14,12 +14,17 @@
 
 const SPIN_WORKSHOP_CONFIG = {
   // Replace this with your deployed Google Apps Script Web App URL
-  API_URL: 'https://script.google.com/macros/s/AKfycbylXlCEbSxOThSU28MfeWSmf65tMgPHRJI5_5H8dIIuUbzjEoeiwaWvlP6xnH0OZvNj0w/exec',
-  
+  //  API_URL: 'https://script.google.com/macros/s/AKfycbx56CZkvX_CAAnDWx9Q1FEBedrWizjSVBUYOGfb0rsh9NlLTyWz5uCON8JihXSPkFGO/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbx56CZkvX_CAAnDWx9Q1FEBedrWizjSVBUYOGfb0rsh9NlLTyWz5uCON8JihXSPkFGO/exec',
   // Form types
   FORM_TYPES: {
     PRE_WORKSHOP: 'pre_workshop',
-    ATTENDANCE: 'attendance'
+    ATTENDANCE: 'attendance',
+    CHECKIN_QR: 'checkin_qr',
+    CHECKIN_MANUAL: 'checkin_manual',
+    CHECKIN_CONFIRM: 'checkin_confirm',
+    CHECKIN_STATUS: 'checkin_status',
+    CHECKIN_STATS: 'checkin_stats'
   }
 };
 
