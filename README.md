@@ -8,6 +8,7 @@ The site is built with plain HTML, shared CSS, Tailwind CDN utilities, and stati
 
 - `index.html` is the homepage.
 - `about.html`, `mandate.html`, `advertisements.html`, `participating-states.html`, `gallery.html`, `grievance.html`, and `contact.html` are main public pages.
+- `workshop-registration.html` and `workshop-attendance.html` are workshop event pages.
 - `states/` contains individual participating state pages.
 - `ads/` contains dated advertisement detail pages.
 - `docs/` contains public downloadable documents.
@@ -15,6 +16,8 @@ The site is built with plain HTML, shared CSS, Tailwind CDN utilities, and stati
 - `style.css` contains shared custom CSS used with Tailwind CDN classes.
 - `template.html` is the starter structure for new static pages.
 - `grievance-admin.html` is the GRM admin dashboard page.
+- `apps-script/` contains Google Apps Script backends for form submissions (GRM and workshop systems).
+- `js/` contains shared JavaScript configuration files.
 
 ## Local Preview
 
@@ -74,3 +77,13 @@ Check that the hamburger opens, the page does not scroll sideways, tables remain
 - Update repeated navigation markup across all relevant pages when a menu item changes.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the participating-states sequence and contribution checklist.
+
+## Workshop System
+
+The repository includes a custom workshop registration and attendance system:
+- `workshop-registration.html` - Pre-workshop registration form
+- `workshop-attendance.html` - Event day attendance form
+- `apps-script/workshop-backend.gs` - Google Apps Script backend
+- `apps-script/README.md` - Complete deployment and configuration documentation
+
+See the [Workshop System Documentation](apps-script/README.md) for setup instructions.
