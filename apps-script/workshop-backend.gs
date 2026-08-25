@@ -499,6 +499,11 @@ function doGet(e) {
     var action = e.parameter ? e.parameter.action : null;
     if (action === 'checkin_stats') return handleCheckinStats({});
     if (action === 'lookup') return handleLookupRegistration(e.parameter);
+    if (action === 'register') return handleRegistration(e.parameter);
+    if (action === 'attendance') return handleAttendance(e.parameter);
+    if (action === 'checkin_manual') return handleCheckinManual(e.parameter);
+    if (action === 'checkin_qr') return handleCheckinQr(e.parameter);
+    if (action === 'checkin_confirm') return handleCheckinConfirm(e.parameter);
 
     return jsonResponse({
       success: true,

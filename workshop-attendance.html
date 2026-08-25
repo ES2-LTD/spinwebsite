@@ -478,28 +478,29 @@
       errorMessage.classList.add('hidden');
 
       try {
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify({
-            type: 'attendance',
-            fullName: fullName,
-            designation: designation,
-            organization: organization,
-            email: email,
-            phone: phone,
-            acknowledgedAttendance: true
-          })
-        });
+        const attendanceUrl = API_URL + '?' + new URLSearchParams({
+          action: 'attendance',
+          fullName, designation, organization, email, phone,
+          acknowledgedAttendance: 'true'
+        }).toString();
+        const response = await fetch(attendanceUrl);
+        const result = await response.json();
 
-        // no-cors means we can't read the response, but the server processes it
-        form.classList.add('hidden');
-        successMessage.classList.remove('hidden');
+        if (result.success) {
+          form.classList.add('hidden');
+          successMessage.classList.remove('hidden');
+        } else {
+          document.getElementById('error-text').textContent = result.message || 'Something went wrong.';
+          errorMessage.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Record Attendance';
+        }
 
       } catch (error) {
-        // Even on error, the no-cors POST may have succeeded
-        form.classList.add('hidden');
-        successMessage.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Record Attendance';
+        document.getElementById('error-text').textContent = 'Network error. Please try again.';
+        errorMessage.classList.remove('hidden');
       }
     });
   </script>

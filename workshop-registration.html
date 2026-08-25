@@ -492,30 +492,15 @@
       errorMessage.classList.add('hidden');
 
       try {
-        // Step 1: POST registration (no-cors — server processes it even if browser can't read response)
-        await fetch(API_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify({
-            type: 'pre_workshop',
-            fullName, designation, organization, email, phone
-          })
-        });
+        // Register via GET (avoids CORS redirect body-loss issue)
+        const registerUrl = API_URL + '?' + new URLSearchParams({
+          action: 'register',
+          fullName, designation, organization, email, phone
+        }).toString();
+        const response = await fetch(registerUrl);
+        const result = await response.json();
 
-        // Step 2: Poll GET endpoint to retrieve registration ID
-        let result = null;
-        for (let attempt = 0; attempt < 10; attempt++) {
-          await new Promise(r => setTimeout(r, 1500));
-          try {
-            const lookupRes = await fetch(API_URL + '?action=lookup&email=' + encodeURIComponent(email));
-            result = await lookupRes.json();
-            if (result.success && result.id) break;
-          } catch (lookupErr) {
-            // keep retrying
-          }
-        }
-
-        if (result && result.success && result.id) {
+        if (result.success && result.id) {
           // Show success with QR code
           form.classList.add('hidden');
           document.getElementById('registered-email').textContent = email;

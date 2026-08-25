@@ -295,12 +295,8 @@
       searchResults.appendChild(searchEmpty);
 
       try {
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          redirect: 'follow',
-          body: JSON.stringify({ type: 'checkin_manual', query })
-        });
-
+        const searchUrl = API_URL + '?' + new URLSearchParams({ action: 'checkin_manual', query }).toString();
+        const response = await fetch(searchUrl);
         const result = await response.json();
         searchLoading.classList.add('hidden');
 
@@ -359,15 +355,9 @@
       lastCheckinTime = now;
 
       try {
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          redirect: 'follow',
-          body: JSON.stringify({
-            type: method === 'QR Scan' ? 'checkin_qr' : 'checkin_confirm',
-            registrationId: registrationId
-          })
-        });
-
+        const checkinAction = method === 'QR Scan' ? 'checkin_qr' : 'checkin_confirm';
+        const checkinUrl = API_URL + '?' + new URLSearchParams({ action: checkinAction, registrationId }).toString();
+        const response = await fetch(checkinUrl);
         const result = await response.json();
 
         if (result.success) {
