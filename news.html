@@ -153,182 +153,446 @@
 
   <!-- Main Content -->
   <main id="main" class="py-16 bg-gray-50 min-h-screen">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- News Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- ═══════ Article 1: Katsina Dam Inspection ═══════ -->
-        <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-
-          <!-- Article Image -->
-          <div class="aspect-[16/9] overflow-hidden">
-            <img src="images/august2026/katsina-dam-inspection.jpg" alt="Federal Team Inspects Danja Dam in Katsina State" class="w-full h-full object-cover" loading="lazy" />
+        <!-- ═══════ Card 1: Yobe Steering & Technical Committees Inauguration (November 2026) ═══════ -->
+        <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <!-- Card Image -->
+          <div class="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+            <img src="images/november2026/401160.jpg" alt="Yobe State SPIN Project Steering and Technical Committees Inauguration" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#008C5A] text-white text-xs font-bold uppercase tracking-wider shadow">
+              Yobe State
+            </span>
           </div>
 
-          <!-- Article Body -->
-          <div class="p-6 sm:p-8">
-            <!-- Date Badge -->
-            <div class="flex items-center gap-3 mb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#008C5A]/10 text-[#008C5A] text-xs font-bold uppercase tracking-wider">
-                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                August 30, 2026
-              </span>
+          <!-- Card Body -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <!-- Date -->
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 mb-2">
+                <svg class="h-3.5 w-3.5 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                November 11, 2026
+              </div>
+
+              <!-- Headline -->
+              <h2 class="text-lg font-extrabold text-gray-900 group-hover:text-[#008C5A] transition-colors leading-snug mb-3">
+                YOBE STATE SPIN PROJECT INAUGURATES STATE STEERING &amp; TECHNICAL COMMITTEES
+              </h2>
+
+              <!-- Excerpt -->
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+                The Yobe State Sustainable Power and Irrigation for Nigeria (SPIN) Project has successfully inaugurated its State Steering Committee (SSC) and State Technical Committee (STC) to strengthen project coordination and oversight.
+              </p>
             </div>
 
-            <!-- Headline -->
-            <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-3">
-              SPIN Project: Federal Team Inspects Danja Dam, Commends Katsina Govt's Commitment
-            </h2>
+            <!-- Modal Trigger Button -->
+            <button onclick="openNewsModal('modal-yobe')" class="mt-2 w-full py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-[#008C5A] hover:text-white text-[#008C5A] font-bold text-sm transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
+              Read Full News
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
 
-            <!-- Source -->
-            <p class="text-sm text-gray-500 italic mb-4">
-              By SULAIMAN AHMED MISAU, Katsina — <span class="font-semibold not-italic">New Nigerian Newspaper</span>
+        <!-- ═══════ Card 2: Jigawa Warwade Sensitization (November 2026) ═══════ -->
+        <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <!-- Card Image -->
+          <div class="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+            <img src="images/november2026/401198.jpg" alt="Jigawa SPIN Project Sensitization Meeting in Warwade Community" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#008C5A] text-white text-xs font-bold uppercase tracking-wider shadow">
+              Jigawa State
+            </span>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <!-- Date -->
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 mb-2">
+                <svg class="h-3.5 w-3.5 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                November 9, 2026
+              </div>
+
+              <!-- Headline -->
+              <h2 class="text-lg font-extrabold text-gray-900 group-hover:text-[#008C5A] transition-colors leading-snug mb-3">
+                JIGAWA SPIN PROJECT CONDUCTS SENSITIZATION MEETING WITH FARMERS, TRADITIONAL LEADERS IN WARWADE COMMUNITY
+              </h2>
+
+              <!-- Excerpt -->
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+                The Sustainable Power and Irrigation for Nigeria (SPIN) Project in Jigawa State has conducted a sensitization meeting with farmers and traditional leaders in Warwade community to promote awareness and clarify land rights.
+              </p>
+            </div>
+
+            <!-- Modal Trigger Button -->
+            <button onclick="openNewsModal('modal-jigawa')" class="mt-2 w-full py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-[#008C5A] hover:text-white text-[#008C5A] font-bold text-sm transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
+              Read Full News
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- ═══════ Card 2: Katsina Dam Inspection (August 2026) ═══════ -->
+        <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <!-- Card Image -->
+          <div class="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+            <img src="images/august2026/katsina-dam-inspection.jpg" alt="Federal Team Inspects Danja Dam in Katsina State" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#008C5A] text-white text-xs font-bold uppercase tracking-wider shadow">
+              Katsina State
+            </span>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <!-- Date -->
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 mb-2">
+                <svg class="h-3.5 w-3.5 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                August 30, 2026
+              </div>
+
+              <!-- Headline -->
+              <h2 class="text-lg font-extrabold text-gray-900 group-hover:text-[#008C5A] transition-colors leading-snug mb-3">
+                SPIN Project: Federal Team Inspects Danja Dam, Commends Katsina Govt's Commitment
+              </h2>
+
+              <!-- Excerpt -->
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+                A high powered delegation from Federal Project Monitoring Unit of the SPIN Project inspected Danja Dam in Danja LGA as part of ongoing preparations for project implementation.
+              </p>
+            </div>
+
+            <!-- Modal Trigger Button -->
+            <button onclick="openNewsModal('modal-katsina')" class="mt-2 w-full py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-[#008C5A] hover:text-white text-[#008C5A] font-bold text-sm transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
+              Read Full News
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- ═══════ Card 3: Emir Sanusi / Kano SPIN (September 2026) ═══════ -->
+        <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <!-- Card Image -->
+          <div class="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+            <img src="images/august2026/kano-sanusinews1.jpeg" alt="Emir Sanusi II with Kano SPIU team during the engagement" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#008C5A] text-white text-xs font-bold uppercase tracking-wider shadow">
+              Kano State
+            </span>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <!-- Date -->
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 mb-2">
+                <svg class="h-3.5 w-3.5 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                September 2026
+              </div>
+
+              <!-- Headline -->
+              <h2 class="text-lg font-extrabold text-gray-900 group-hover:text-[#008C5A] transition-colors leading-snug mb-3">
+                Emir Sanusi Backs Kano SPIN's Bold Engineering Blueprint, Moves to Unlock Global Investment
+              </h2>
+
+              <!-- Excerpt -->
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+                The Emir of Kano, His Highness Khalifa Muhammadu Sanusi II, has expressed strong satisfaction with the performance, strategic direction and ambition of the Kano State Project Implementation Unit.
+              </p>
+            </div>
+
+            <!-- Modal Trigger Button -->
+            <button onclick="openNewsModal('modal-kano')" class="mt-2 w-full py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-[#008C5A] hover:text-white text-[#008C5A] font-bold text-sm transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
+              Read Full News
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+      </div><!-- /grid -->
+
+    </div>
+
+    <!-- ═══════════════════════ MODALS / POPUPS ═══════════════════════ -->
+
+    <!-- Modal 0: Yobe Steering & Technical Committees -->
+    <div id="modal-yobe" class="news-modal fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm p-4 sm:p-6 md:p-10 flex items-center justify-center overflow-y-auto" onclick="handleBackdropClick(event, 'modal-yobe')">
+      <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative animate-fadeIn" onclick="event.stopPropagation()">
+        <!-- Modal Header with Image -->
+        <div class="relative aspect-[16/8] sm:aspect-[21/9] w-full overflow-hidden bg-gray-900 flex-shrink-0">
+          <img src="images/november2026/401160.jpg" alt="Yobe State SPIN Committee Inauguration" class="w-full h-full object-cover">
+          <button onclick="closeNewsModal('modal-yobe')" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xl transition-all focus:outline-none" aria-label="Close modal">
+            &times;
+          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
+            <span class="px-3 py-1 rounded-full bg-[#aaff33] text-gray-950 text-xs font-bold uppercase tracking-wider">
+              November 11, 2026 &bull; Yobe State
+            </span>
+          </div>
+        </div>
+
+        <!-- Modal Scrollable Content -->
+        <div class="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-6">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-3">
+              YOBE STATE SUSTAINABLE POWER AND IRRIGATION FOR NIGERIA (SPIN) PROJECT INAUGURATES STATE STEERING &amp; TECHNICAL COMMITTEES
+            </h3>
+            <p class="text-sm text-gray-500 italic">
+              By <span class="font-semibold not-italic text-gray-800">Communication &amp; Media Unit</span> — Yobe SPIN Project
             </p>
+          </div>
 
-            <!-- Excerpt -->
-            <p class="text-gray-700 leading-relaxed mb-4">
+          <div class="prose max-w-none text-gray-700 leading-relaxed text-sm sm:text-base space-y-4">
+            <p class="text-lg font-medium text-gray-800 leading-relaxed">
+              The Yobe State Sustainable Power and Irrigation for Nigeria (SPIN) Project has successfully inaugurated its State Steering Committee (SSC) and State Technical Committee (STC).
+            </p>
+            <p>
+              The inauguration marks an important milestone in strengthening project coordination, strategic direction, technical oversight, and effective implementation of SPIN Project activities in Yobe State.
+            </p>
+            <p>
+              The committees are expected to provide strategic guidance, facilitate inter-ministerial collaboration, address implementation challenges, and ensure that project objectives are achieved in line with the project's development goals and standards.
+            </p>
+            <blockquote class="border-l-4 border-[#008C5A] pl-4 py-2 italic font-medium bg-green-50 text-gray-900 rounded-r-lg">
+              The inauguration further demonstrates the commitment of the Yobe State Government and relevant stakeholders towards promoting sustainable irrigation development, improving water resource management, and expanding access to reliable power for agricultural productivity and economic growth.
+            </blockquote>
+            <p class="font-semibold text-gray-900">
+              Together, we are committed to driving sustainable development and improving livelihoods across Yobe State.
+            </p>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 flex justify-between items-center text-xs text-gray-500">
+            <span>Published by: Yobe State SPIN PIU</span>
+            <button onclick="closeNewsModal('modal-yobe')" class="px-5 py-2 rounded-xl bg-[#008C5A] text-white font-bold hover:bg-[#007048] transition">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 1: Jigawa Warwade -->
+    <div id="modal-jigawa" class="news-modal fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm p-4 sm:p-6 md:p-10 flex items-center justify-center overflow-y-auto" onclick="handleBackdropClick(event, 'modal-jigawa')">
+      <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative animate-fadeIn" onclick="event.stopPropagation()">
+        <!-- Modal Header with Image -->
+        <div class="relative aspect-[16/8] sm:aspect-[21/9] w-full overflow-hidden bg-gray-900 flex-shrink-0">
+          <img src="images/november2026/401198.jpg" alt="Jigawa Warwade Sensitization" class="w-full h-full object-cover">
+          <button onclick="closeNewsModal('modal-jigawa')" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xl transition-all focus:outline-none" aria-label="Close modal">
+            &times;
+          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
+            <span class="px-3 py-1 rounded-full bg-[#aaff33] text-gray-950 text-xs font-bold uppercase tracking-wider">
+              November 9, 2026 &bull; Jigawa State
+            </span>
+          </div>
+        </div>
+
+        <!-- Modal Scrollable Content -->
+        <div class="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-6">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-3">
+              JIGAWA SPIN PROJECT CONDUCTS SENSITIZATION MEETING WITH FARMERS, TRADITIONAL LEADERS IN WARWADE COMMUNITY
+            </h3>
+            <p class="text-sm text-gray-500 italic">
+              By <span class="font-semibold not-italic text-gray-800">Isma'il Ibrahim Dutse</span>, Communication Officer — Jigawa SPIN Project
+            </p>
+          </div>
+
+          <div class="prose max-w-none text-gray-700 leading-relaxed text-sm sm:text-base space-y-4">
+            <p class="text-lg font-medium text-gray-800 leading-relaxed">
+              The Sustainable Power and Irrigation for Nigeria (SPIN) Project in Jigawa State has conducted a sensitization meeting with farmers and traditional leaders in Warwade community as part of its ongoing efforts to promote public awareness, strengthen community engagement, and ensure the successful implementation of the project.
+            </p>
+            <p>
+              The sensitization meeting, held in Warwade town, was led by the State Project Coordinator, Engr. Alhassan Abbas. It provided an important platform for constructive engagement with farmers, traditional institutions, and other community stakeholders on the objectives, benefits, planned activities, and implementation strategies of the SPIN Project.
+            </p>
+            <p>
+              The engagement was primarily aimed at enhancing awareness and understanding of the project among the benefiting communities, addressing concerns, correcting misconceptions, and securing the necessary support and cooperation of local stakeholders for the successful execution of the planned interventions.
+            </p>
+            <p>
+              Speaking during the meeting, Engr. Alhassan Abbas emphasized that effective community participation, mutual understanding, and collaboration with relevant stakeholders are essential to achieving the objectives of the SPIN Project.
+            </p>
+            <p>
+              He particularly addressed concerns and misinformation surrounding land ownership, categorically clarifying that the SPIN Project is not intended to seize, confiscate, or take possession of farmers' farmlands. He explained that the project works closely with local communities and relevant stakeholders to promote sustainable development while respecting indigenous land ownership and the rights of community members.
+            </p>
+            <p>
+              The State Project Coordinator noted that managing community expectations and ensuring that farmers receive accurate information about the project are critical components of the ongoing sensitization exercise. He stressed that the project remains committed to transparent engagement, dialogue, and cooperation with the benefiting communities throughout its implementation.
+            </p>
+            <p>
+              Engr. Alhassan Abbas commended farmers in the Warwade area for their hard work, dedication, and significant contributions to agricultural production and food security in Jigawa State and Nigeria at large.
+            </p>
+            <p>
+              He observed that the SPIN Project presents an important opportunity to enhance agricultural productivity, strengthen food security, and modernize irrigation infrastructure through sustainable irrigation practices and improved water management systems.
+            </p>
+            <blockquote class="border-l-4 border-[#008C5A] pl-4 py-2 italic font-medium bg-green-50 text-gray-900 rounded-r-lg">
+              “We are proud of our farmers, considering their enormous contributions to food production and the development of our agricultural sector. However, with adequate sensitization and a proper understanding of the SPIN project, we believe they will appreciate its objectives and provide the necessary support and cooperation to ensure its successful implementation. We sincerely appreciate the efforts and support extended to Jigawa SPIN. This engagement has further strengthened the relationship between the project and the benefiting communities, and we look forward to sustaining this positive partnership,” he stated.
+            </blockquote>
+            <p>
+              The Project Coordinator also expressed profound appreciation to the Executive Governor of Jigawa State, His Excellency, Malam Umar A. Namadi, FCA, for his continued commitment, support, and cooperation towards the successful implementation of the SPIN Project in the state since its inception.
+            </p>
+            <p>
+              He acknowledged that the Governor's unwavering support has continued to provide an enabling environment for the project to achieve its development objectives and deliver meaningful benefits to the people of Jigawa State.
+            </p>
+            <p>
+              In their separate remarks, the Village Head of Jidawa, Alhaji Baffa Shehu, and the representative of the Warwade Village Head, Buhari Musa Ado, expressed their appreciation to the Government of Jigawa State and the SPIN Project for bringing development opportunities closer to their communities.
+            </p>
+            <p>
+              They described the project as a welcome initiative with the potential to improve agricultural activities, enhance irrigation facilities, and strengthen the economic well-being of farmers in the area.
+            </p>
+            <p>
+              The traditional representatives further commended the project management for engaging directly with community members and providing clarification on issues relating to the project, particularly concerns surrounding farmland ownership.
+            </p>
+            <p>
+              They assured the Jigawa SPIN Project of their communities' readiness to provide all necessary support, cooperation, and assistance to facilitate smooth implementation and ensure that the project achieves its intended objectives.
+            </p>
+            <p>
+              The meeting also featured presentations and contributions from the Project's Monitoring and Evaluation (M&E) Officer, Malam Usaini Jafar, and Gender Officer, Hajiya Hadiza Sabo, who highlighted the importance of community participation, stakeholder cooperation, inclusiveness, and accountability in the implementation process.
+            </p>
+            <p>
+              They encouraged farmers, traditional leaders, and other community members to remain actively engaged with the project, cooperate with the implementation team, and utilize available engagement platforms to seek clarification, express concerns, and contribute to the successful delivery of project activities.
+            </p>
+            <p>
+              The officers further emphasized the importance of ensuring that women and other relevant community groups are adequately informed, actively involved, and given due consideration in project-related engagements and development interventions.
+            </p>
+            <p>
+              The sensitization meeting forms part of Jigawa SPIN's broader stakeholder engagement and community awareness initiatives, aimed at ensuring that benefiting communities are adequately informed, actively involved, and fully prepared for the planned interventions.
+            </p>
+            <p>
+              Through these engagements, the Jigawa SPIN Project seeks to build trust, promote transparency, address community concerns, and establish a strong partnership between the project implementation team and local stakeholders.
+            </p>
+            <p>
+              The project remains committed to working closely with the Government of Jigawa State, traditional institutions, farmers, and other relevant stakeholders to promote sustainable irrigation development, enhance agricultural productivity, strengthen food security, and contribute to the overall socio-economic development of the state.
+            </p>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 flex justify-between items-center text-xs text-gray-500">
+            <span>Published by: Jigawa State SPIN PIU</span>
+            <button onclick="closeNewsModal('modal-jigawa')" class="px-5 py-2 rounded-xl bg-[#008C5A] text-white font-bold hover:bg-[#007048] transition">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Katsina Dam -->
+    <div id="modal-katsina" class="news-modal fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm p-4 sm:p-6 md:p-10 flex items-center justify-center overflow-y-auto" onclick="handleBackdropClick(event, 'modal-katsina')">
+      <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative animate-fadeIn" onclick="event.stopPropagation()">
+        <!-- Modal Header with Image -->
+        <div class="relative aspect-[16/8] sm:aspect-[21/9] w-full overflow-hidden bg-gray-900 flex-shrink-0">
+          <img src="images/august2026/katsina-dam-inspection.jpg" alt="Danja Dam Inspection" class="w-full h-full object-cover">
+          <button onclick="closeNewsModal('modal-katsina')" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xl transition-all focus:outline-none" aria-label="Close modal">
+            &times;
+          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
+            <span class="px-3 py-1 rounded-full bg-[#aaff33] text-gray-950 text-xs font-bold uppercase tracking-wider">
+              August 30, 2026 &bull; Katsina State
+            </span>
+          </div>
+        </div>
+
+        <!-- Modal Scrollable Content -->
+        <div class="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-6">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-3">
+              SPIN Project: Federal Team Inspects Danja Dam, Commends Katsina Govt's Commitment
+            </h3>
+            <p class="text-sm text-gray-500 italic">
+              By <span class="font-semibold not-italic text-gray-800">SULAIMAN AHMED MISAU</span>, Katsina — New Nigerian Newspaper
+            </p>
+          </div>
+
+          <div class="prose max-w-none text-gray-700 leading-relaxed text-sm sm:text-base space-y-4">
+            <p class="text-lg font-medium text-gray-800 leading-relaxed">
               A high powered delegation from Federal Project Monitoring Unit of the Sustainable Power and Irrigation for Nigeria (SPIN) Project were in Katsina State to inspect Danja Dam in Danja local government area of the state as part of ongoing preparations for the Project implementation.
             </p>
-
-            <!-- Read More Toggle -->
-            <button onclick="toggleArticle('article1', this)" class="inline-flex items-center gap-2 text-[#008C5A] font-bold text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-[#008C5A] rounded">
-              Read Full Article
-              <svg class="chevron h-4 w-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-
-            <!-- Full Article (hidden by default) -->
-            <div id="article1" class="event-photos mt-4">
-              <div class="prose prose-gray max-w-none text-gray-700 text-sm leading-relaxed space-y-4">
-                <p>
-                  Headed by Engineer Tawo Ogekan, the delegation arrived in Katsina at the weekend for inspection in collaboration with the State under the Project Coordinator, Engineer Shamsuddeen Sulaiman who led the two teams to the site.
-                </p>
-                <p>
-                  The aim of the visit was to make proper assessments of the structural integrity and safety condition of the Dam ahead of proposed intervention under Sustainable Power and Irrigation for Nigeria (SPIN) Project.
-                </p>
-                <p>
-                  Members of the Federal Project Monitoring team are: Professor Donald; Engineer M.O Offie; Engineer Usman Abubakar and Engineer Charles Okeke.
-                </p>
-                <p>
-                  Other members of the SPIN Project team from Katsina who participated in the exercise were Engineer Mustapha Dan Malam; Engineer Aminu Lawal Musa; Usman Adamu and Aisha Sifiyanu Masari.
-                </p>
-                <p>
-                  "During the exercise, members of the Dam Safety Review Panel of Experts carried out a comprehensive assessment of the dam, inspecting both its internal and external structures to determine its current condition, identify potential safety concerns and establish the measures required to ensure that the facility remains safe, functional and fit for its intended purpose," the Katsina State Project Coordinator, Engineer Shamsudden Sulaiman said.
-                </p>
-                <p>
-                  Engineer Sulaiman expressed his appreciation to the Federal Project Monitoring Unit and the Dam Safety Review Panel of Experts for undertaking the inspection.
-                </p>
-                <p>
-                  According to him, recommendations from the assessment would contribute tremendously to ensure safety and sustainability of the dam as well as enable People of Katsina State to derive maximum benefits from the facility.
-                </p>
-                <p>
-                  Engineer Shamsuddeen Sulaiman commended Governor Dikko Umar Radda, for his continued commitment to improve the livelihoods of the people of the state, especially through promotion of dry-season farming and irrigation development.
-                </p>
-                <p>
-                  Engineer Shamsuddeen commended the State commissioner of water resources, Alhaji Mannir Ayuba Sullubawa for support and administrative counseling to ensure smooth implementation of the project in Katsina State.
-                </p>
-                <p>
-                  Speaking, leader of the Federal delegation, Engineer Tawo Ogekan also commended Katsina State Government under the leadership of Governor Dikko Umaru Radda for its support and commitment to the implementation of the SPIN Project.
-                </p>
-                <p>
-                  Engineer Ogekan emphasised that, Katsina state government's cooperation and demonstration of commitment were very important to the successful delivery of the project.
-                </p>
-                <p>
-                  Engineer Tawo Ogekan reiterated the need for stronger and effective collaboration between Federal and Katsina State Governments, technical experts as well as other stakeholders who would be critical to achieving the desired results.
-                </p>
-                <p>
-                  Engineer Ogekan said the inspection of Danja Dam was particularly important because dam safety remained a key priority of the SPIN Project, stressing that, "ensuring the structural soundness and safe operation of dams is essential to protecting communities while maximizing the economic benefits of water infrastructure."
-                </p>
-                <p>
-                  The Sustainable Power and Irrigation for Nigeria Project was a World Bank-supported initiative of the Federal Government designed to strengthen dam safety and improve the management of water resources for irrigation and hydropower in selected parts of Nigeria.
-                </p>
-                <p>
-                  It was consequently designed to address Nigeria's interconnected water, food and energy challenges by improving irrigation and drainage services, strengthening dam safety and water-resources management, and supporting hydropower development and planning.
-                </p>
-                <p>
-                  However, the Federal Project Monitoring Unit maintained its commitment to continued engagement with the Katsina State Government and other stakeholders as efforts intensify towards the successful implementation of the SPIN Project.
-                </p>
-              </div>
-              <p class="mt-4 text-xs text-gray-400">
-                Source: <a href="https://www.newnigeriannewspapers.ng/spin-project-federal-team-inspects-danja-dam-commends-katsina-govts-commitment/" target="_blank" rel="noopener noreferrer" class="text-[#008C5A] hover:underline">New Nigerian Newspaper — Original Article</a>
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <!-- ═══════ Article 2: Emir Sanusi / Kano SPIN ═══════ -->
-        <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-
-          <!-- Article Image -->
-          <div class="aspect-[16/9] overflow-hidden">
-            <img src="images/august2026/kano-sanusinews1.jpeg" alt="Emir Sanusi II with Kano SPIU team during the engagement" class="w-full h-full object-cover" loading="lazy" />
-          </div>
-
-          <!-- Article Body -->
-          <div class="p-6 sm:p-8">
-            <!-- Date Badge -->
-            <div class="flex items-center gap-3 mb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#008C5A]/10 text-[#008C5A] text-xs font-bold uppercase tracking-wider">
-                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                September 2026
-              </span>
-            </div>
-
-            <!-- Headline -->
-            <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug mb-3">
-              Emir Sanusi Backs Kano SPIN's Bold Engineering Blueprint, Moves to Unlock Global Investment for Irrigation Transformation
-            </h2>
-
-            <!-- Source -->
-            <p class="text-sm text-gray-500 italic mb-4">
-              <span class="font-semibold not-italic">Maryam Mustpha Abdul</span> — Information and Communication Specialist, SPIN Project Kano
+            <p>
+              Headed by Engineer Tawo Ogekan, the delegation arrived in Katsina at the weekend for inspection in collaboration with the State under the Project Coordinator, Engineer Shamsuddeen Sulaiman who led the two teams to the site.
             </p>
+            <p>
+              The aim of the visit was to make proper assessments of the structural integrity and safety condition of the Dam ahead of proposed intervention under Sustainable Power and Irrigation for Nigeria (SPIN) Project.
+            </p>
+            <p>
+              Members of the Federal Project Monitoring team are: Professor Donald; Engineer M.O Offie; Engineer Usman Abubakar and Engineer Charles Okeke. Other members of the SPIN Project team from Katsina who participated in the exercise were Engineer Mustapha Dan Malam; Engineer Aminu Lawal Musa; Usman Adamu and Aisha Sifiyanu Masari.
+            </p>
+            <blockquote class="border-l-4 border-[#008C5A] pl-4 py-2 italic font-medium bg-green-50 text-gray-900 rounded-r-lg">
+              "During the exercise, members of the Dam Safety Review Panel of Experts carried out a comprehensive assessment of the dam, inspecting both its internal and external structures to determine its current condition, identify potential safety concerns and establish the measures required to ensure that the facility remains safe, functional and fit for its intended purpose," the Katsina State Project Coordinator, Engineer Shamsudden Sulaiman said.
+            </blockquote>
+            <p>
+              Engineer Sulaiman expressed his appreciation to the Federal Project Monitoring Unit and the Dam Safety Review Panel of Experts for undertaking the inspection. According to him, recommendations from the assessment would contribute tremendously to ensure safety and sustainability of the dam as well as enable People of Katsina State to derive maximum benefits from the facility.
+            </p>
+            <p>
+              Engineer Shamsuddeen Sulaiman commended Governor Dikko Umar Radda, for his continued commitment to improve the livelihoods of the people of the state, especially through promotion of dry-season farming and irrigation development. He also commended the State commissioner of water resources, Alhaji Mannir Ayuba Sullubawa for support and administrative counseling to ensure smooth implementation of the project in Katsina State.
+            </p>
+            <p>
+              Speaking, leader of the Federal delegation, Engineer Tawo Ogekan also commended Katsina State Government under the leadership of Governor Dikko Umaru Radda for its support and commitment to the implementation of the SPIN Project, noting that ensuring the structural soundness and safe operation of dams is essential to protecting communities while maximizing economic benefits.
+            </p>
+          </div>
 
-            <!-- Excerpt -->
-            <p class="text-gray-700 leading-relaxed mb-4">
+          <div class="border-t border-gray-100 pt-4 flex justify-between items-center text-xs text-gray-500">
+            <a href="https://www.newnigeriannewspapers.ng/spin-project-federal-team-inspects-danja-dam-commends-katsina-govts-commitment/" target="_blank" rel="noopener noreferrer" class="text-[#008C5A] hover:underline font-semibold">Source: New Nigerian Newspaper &rarr;</a>
+            <button onclick="closeNewsModal('modal-katsina')" class="px-5 py-2 rounded-xl bg-[#008C5A] text-white font-bold hover:bg-[#007048] transition">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Kano SPIN -->
+    <div id="modal-kano" class="news-modal fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm p-4 sm:p-6 md:p-10 flex items-center justify-center overflow-y-auto" onclick="handleBackdropClick(event, 'modal-kano')">
+      <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative animate-fadeIn" onclick="event.stopPropagation()">
+        <!-- Modal Header with Image -->
+        <div class="relative aspect-[16/8] sm:aspect-[21/9] w-full overflow-hidden bg-gray-900 flex-shrink-0">
+          <img src="images/august2026/kano-sanusinews1.jpeg" alt="Emir Sanusi II with Kano SPIU" class="w-full h-full object-cover">
+          <button onclick="closeNewsModal('modal-kano')" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xl transition-all focus:outline-none" aria-label="Close modal">
+            &times;
+          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
+            <span class="px-3 py-1 rounded-full bg-[#aaff33] text-gray-950 text-xs font-bold uppercase tracking-wider">
+              September 2026 &bull; Kano State
+            </span>
+          </div>
+        </div>
+
+        <!-- Modal Scrollable Content -->
+        <div class="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-6">
+          <div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-3">
+              Emir Sanusi Backs Kano SPIN's Bold Engineering Blueprint, Moves to Unlock Global Investment for Irrigation Transformation
+            </h3>
+            <p class="text-sm text-gray-500 italic">
+              By <span class="font-semibold not-italic text-gray-800">Maryam Mustpha Abdul</span> — Information and Communication Specialist, SPIN Project Kano
+            </p>
+          </div>
+
+          <div class="prose max-w-none text-gray-700 leading-relaxed text-sm sm:text-base space-y-4">
+            <p class="text-lg font-medium text-gray-800 leading-relaxed">
               The Emir of Kano, His Highness Khalifa Muhammadu Sanusi II, has expressed strong satisfaction with the performance, strategic direction and ambition of the Kano State Project Implementation Unit (SPIU) of the Sustainable Power and Irrigation for Nigeria (SPIN) Project.
             </p>
-
-            <!-- Read More Toggle -->
-            <button onclick="toggleArticle('article2', this)" class="inline-flex items-center gap-2 text-[#008C5A] font-bold text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-[#008C5A] rounded">
-              Read Full Article
-              <svg class="chevron h-4 w-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-
-            <!-- Full Article (hidden by default) -->
-            <div id="article2" class="event-photos mt-4">
-              <div class="prose prose-gray max-w-none text-gray-700 text-sm leading-relaxed space-y-4">
-                <p>
-                  During a two-hour high level technical and stakeholder engagement with the emir and members of the emirate council, the Kano SPIU, led by the State Project Coordinator Engr. Nuraddeen Isah Abubakar presented its proposed engineering concepts for irrigation modernization, dam rehabilitations, Kano State Integrated Water Resources Monitoring System (KS-IWRMS), alongside the Unit's broader investment and development vision for Kano State.
-                </p>
-                <p>
-                  His Highness the former CBN governor and a global economic and financial expert commended the progress being recorded under the leadership of the State Project Coordinator, particularly the PIU's broader vision to leverage the SPIN platform to transform irrigation, agricultural productivity, sustainable power and investment in Kano State.
-                </p>
-                <p>
-                  During the presentation, the State Project Coordinator highlighted key elements of the proposed modernization programme, including a modern open-channel irrigation system, decentralized sprinkler irrigation scheme, advanced grazing systems, modern dam instrumentation for real-time dam safety monitoring and an Irrigation Intelligence Monitoring System developed by the Kano SPIU to strengthen data-driven, informed planning and irrigation performance monitoring.
-                </p>
-                <p>
-                  The Kano SPIU also presented its three strategic plans: the Kano SPIN Project Implementation Acceleration Plan, Kano SPIN Investment Portfolio Expansion Plan and Kano SPIN Special Project Integration and Management Plan.
-                </p>
-                <p>
-                  His Highness pledged to support the Kano SPIN Project and lead high-level engagements, locally and internationally, aimed at mobilizing additional investment, development finance and strategic partnerships to support Kano State's ambition in transforming irrigation and agricultural economic ecosystem in the state.
-                </p>
-                <p>
-                  The Emir further proposed the establishment of a high-level multi-stakeholder platform, which he offered to lead, bringing together relevant State and Federal institutions, development finance institutions and private-sector. The platform would also facilitate strategic alignment between the State's emerging economic blueprint and masterplan with investment and project-development opportunities being advanced through Kano SPIN.
-                </p>
-                <p>
-                  Drawing from his extensive background in economics, banking, investment and risk management, His Highness further offered to provide strategic advisory support to the Kano SPIU on finance, investment and risk management, while facilitating engagements with the state and institutions such as IFC, African Development Bank, relevant Federal MDAs, Babban Gona and other international investors and venture capital networks.
-                </p>
-                <p>
-                  For Kano SPIN, the vision is increasingly clear: To move beyond conventional project implementation and build an integrated, technology-driven irrigation and water resources system capable of unlocking agricultural productivity, private investment, jobs and sustainable economic growth for Kano State.
-                </p>
-              </div>
-              <p class="mt-4 text-xs text-gray-400 italic">
-                Signed: Maryam Mustpha Abdul, Information and Communication Specialist, SPIN Project Kano
-              </p>
-            </div>
+            <p>
+              During a two-hour high level technical and stakeholder engagement with the emir and members of the emirate council, the Kano SPIU, led by the State Project Coordinator Engr. Nuraddeen Isah Abubakar presented its proposed engineering concepts for irrigation modernization, dam rehabilitations, Kano State Integrated Water Resources Monitoring System (KS-IWRMS), alongside the Unit's broader investment and development vision for Kano State.
+            </p>
+            <p>
+              His Highness the former CBN governor and a global economic and financial expert commended the progress being recorded under the leadership of the State Project Coordinator, particularly the PIU's broader vision to leverage the SPIN platform to transform irrigation, agricultural productivity, sustainable power and investment in Kano State.
+            </p>
+            <p>
+              During the presentation, the State Project Coordinator highlighted key elements of the proposed modernization programme, including a modern open-channel irrigation system, decentralized sprinkler irrigation scheme, advanced grazing systems, modern dam instrumentation for real-time dam safety monitoring and an Irrigation Intelligence Monitoring System developed by the Kano SPIU to strengthen data-driven, informed planning and irrigation performance monitoring.
+            </p>
+            <p>
+              The Kano SPIU also presented its three strategic plans: the Kano SPIN Project Implementation Acceleration Plan, Kano SPIN Investment Portfolio Expansion Plan and Kano SPIN Special Project Integration and Management Plan.
+            </p>
+            <blockquote class="border-l-4 border-[#008C5A] pl-4 py-2 italic font-medium bg-green-50 text-gray-900 rounded-r-lg">
+              His Highness pledged to support the Kano SPIN Project and lead high-level engagements, locally and internationally, aimed at mobilizing additional investment, development finance and strategic partnerships to support Kano State's ambition in transforming irrigation and agricultural economic ecosystem in the state.
+            </blockquote>
+            <p>
+              The Emir further proposed the establishment of a high-level multi-stakeholder platform, which he offered to lead, bringing together relevant State and Federal institutions, development finance institutions and private-sector. Drawing from his extensive background in economics, banking, investment and risk management, His Highness further offered to provide strategic advisory support to the Kano SPIU on finance, investment and risk management, while facilitating engagements with institutions such as IFC, African Development Bank, relevant Federal MDAs, Babban Gona and other international investors.
+            </p>
+            <p>
+              For Kano SPIN, the vision is increasingly clear: To move beyond conventional project implementation and build an integrated, technology-driven irrigation and water resources system capable of unlocking agricultural productivity, private investment, jobs and sustainable economic growth for Kano State.
+            </p>
           </div>
-        </article>
+
+          <div class="border-t border-gray-100 pt-4 flex justify-between items-center text-xs text-gray-500">
+            <span>Signed: Maryam Mustpha Abdul, Information and Communication Specialist</span>
+            <button onclick="closeNewsModal('modal-kano')" class="px-5 py-2 rounded-xl bg-[#008C5A] text-white font-bold hover:bg-[#007048] transition">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
       </div><!-- /grid -->
 
@@ -449,7 +713,7 @@
       if (e.key === 'Escape') { sInput.value = ''; sInput.blur(); }
     });
 
-    // Read More / Read Less toggle
+    // Read More / Read Less toggle (if needed)
     function toggleArticle(id, btn) {
       const panel = document.getElementById(id);
       if (!panel) return;
@@ -459,6 +723,37 @@
       const isExpanded = panel.classList.contains('expanded');
       btn.childNodes[0].textContent = isExpanded ? 'Read Less ' : 'Read Full Article ';
     }
+
+    // Modal popup open/close functions
+    function openNewsModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNewsModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function handleBackdropClick(event, modalId) {
+      if (event.target.id === modalId) {
+        closeNewsModal(modalId);
+      }
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.news-modal:not(.hidden)').forEach(modal => {
+          modal.classList.add('hidden');
+        });
+        document.body.style.overflow = '';
+      }
+    });
   </script>
 
 </body>
