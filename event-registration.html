@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Training Registration | SPIN Project</title>
+  <meta name="description" content="Register for the SPIN Project Technical Training Program (23rd November – 5th December, 2026)." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/spin_logo.jpeg" />
+  <link rel="shortcut icon" href="images/spin_logo.jpeg" type="image/jpeg" />
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Multi-day Configuration -->
+  <script src="js/workshop-config.js"></script>
+
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  </style>
+</head>
+<body class="antialiased font-sans text-gray-900 bg-gray-50/60 min-h-screen flex flex-col">
+
+  <!-- Top Info Bar -->
+  <div class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-2.5 flex items-center justify-between gap-4 text-sm">
+      <a href="/" class="flex items-center gap-3 focus:outline-none">
+        <img src="images/spin_logo.jpeg" alt="SPIN — Sustainable Power Initiative Nigeria" class="h-11 w-auto" />
+      </a>
+
+      <div class="flex items-center space-x-6 text-gray-700 text-xs sm:text-sm">
+        <div class="hidden sm:flex items-center space-x-2 text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-custom-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          <span>+234 803 443 2501</span>
+        </div>
+        <div class="flex items-center">
+          <a href="/event-checkin.html" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 text-custom-green border border-emerald-200 hover:bg-emerald-100 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Staff Check-In Desk
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Green Header -->
+  <header class="bg-custom-green sticky top-0 z-50 shadow-sm">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 h-14 flex items-center justify-between">
+      <nav aria-label="Primary" class="flex items-center gap-6 text-[0.85rem] font-semibold text-white/95">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <a href="/about" class="hover:text-white transition">About</a>
+        <a href="/news" class="hover:text-white transition">News</a>
+        <a href="/contact" class="hover:text-white transition">Contact</a>
+      </nav>
+      <div class="text-xs text-white/80 font-medium hidden sm:block">
+        23 Nov – 5 Dec 2026 &bull; Technical Training
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="relative w-full py-12 md:py-16 bg-gradient-to-br from-green-950 via-[#005a39] to-emerald-900 text-white">
+    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+      <span class="inline-block py-1 px-3.5 rounded-full bg-white/10 backdrop-blur-md text-[11px] font-semibold uppercase tracking-wider mb-3.5 border border-white/20 text-[#aaff33]">
+        Federal Ministry of Water Resources and Sanitation
+      </span>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-3">
+        Capacity Building &amp; Technical Training Program
+      </h1>
+      <p class="text-xs sm:text-sm text-emerald-100/90 max-w-xl mx-auto font-normal">
+        Sustainable Power and Irrigation for Nigeria (SPIN) Project &bull; World Bank Supported
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main" class="flex-1 py-10 md:py-14">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      
+      <!-- Logistics Information Strip -->
+      <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-5 mb-6">
+        <div class="grid grid-cols-3 divide-x divide-gray-100 text-center">
+          <div class="px-2">
+            <span class="text-[11px] uppercase tracking-wider text-gray-500 font-medium block">Dates</span>
+            <span class="text-xs sm:text-sm font-bold text-gray-900 block mt-0.5">23 Nov – 5 Dec</span>
+            <span class="text-[10px] text-custom-green font-semibold">2026</span>
+          </div>
+          <div class="px-2">
+            <span class="text-[11px] uppercase tracking-wider text-gray-500 font-medium block">Time</span>
+            <span class="text-xs sm:text-sm font-bold text-gray-900 block mt-0.5">09:00 AM</span>
+            <span class="text-[10px] text-gray-500">Daily Morning</span>
+          </div>
+          <div class="px-2">
+            <span class="text-[11px] uppercase tracking-wider text-gray-500 font-medium block">Venue</span>
+            <span class="text-xs sm:text-sm font-bold text-gray-900 block mt-0.5">Abuja, FCT</span>
+            <span class="text-[10px] text-gray-500">Main Auditorium</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Form Container -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-10">
+        
+        <div id="form-container">
+          <div class="mb-7 pb-5 border-b border-gray-100">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-900">Participant Registration</h2>
+            <p class="text-xs sm:text-sm text-gray-500 mt-1">Please provide your details below to register for the training sessions</p>
+          </div>
+
+          <form id="event-reg-form" class="space-y-4">
+            <div>
+              <label for="fullName" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="fullName" 
+                name="fullName" 
+                required
+                class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A] transition shadow-sm"
+                placeholder="e.g. Shittu Ibrahim"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="designation" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                  Designation / Role <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="designation" 
+                  name="designation" 
+                  required
+                  class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A] transition shadow-sm"
+                  placeholder="e.g. Senior Irrigation Engineer"
+                />
+              </div>
+
+              <div>
+                <label for="organization" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                  Ministry / Organization <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="organization" 
+                  name="organization" 
+                  required
+                  class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A] transition shadow-sm"
+                  placeholder="e.g. FMWRS / SPIN Project"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="email" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                  Email Address <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required
+                  class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A] transition shadow-sm"
+                  placeholder="name@organization.gov.ng"
+                />
+              </div>
+
+              <div>
+                <label for="phone" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                  Phone Number <span class="text-red-500">*</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  required
+                  class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A] transition shadow-sm"
+                  placeholder="e.g. 0803 123 4567"
+                />
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button 
+                type="submit" 
+                id="submit-btn"
+                class="w-full bg-custom-green hover:bg-[#007048] text-white font-bold py-3 px-5 rounded-lg shadow-sm hover:shadow transition duration-200 flex items-center justify-center gap-2 text-sm"
+              >
+                <span>Submit Registration</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success Result Section -->
+        <div id="success-message" class="hidden text-center py-4">
+          <div class="w-12 h-12 bg-emerald-100 text-custom-green rounded-full flex items-center justify-center mx-auto mb-3.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          
+          <h3 id="res-heading" class="text-xl sm:text-2xl font-bold text-gray-900 mb-1.5">Registration Confirmed</h3>
+          <p class="text-xs sm:text-sm text-gray-600 max-w-md mx-auto mb-6">
+            Welcome, <strong id="res-name" class="text-gray-900 font-semibold"></strong>. Your registration for the SPIN Project Training Program has been recorded.
+          </p>
+
+          <!-- Check-in Instruction Card -->
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 max-w-md mx-auto mb-6 text-left shadow-sm">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-600 block mb-2">Venue Check-In Information</span>
+            <p class="text-xs text-gray-700 leading-relaxed mb-3">
+              When arriving at the venue on training days (23 Nov – 5 Dec 2026):
+            </p>
+            <div class="bg-white p-3.5 rounded-lg border border-gray-200 text-xs text-gray-700 space-y-1.5">
+              <p><span class="text-gray-500 font-medium">Venue:</span> Main Auditorium, FMWRS Headquarters / Apo Training Center</p>
+              <p><span class="text-gray-500 font-medium">Registered Name:</span> <strong id="card-name" class="text-custom-green font-semibold"></strong></p>
+              <p><span class="text-gray-500 font-medium">Instructions:</span> Report to the reception desk and provide your name to the representative to record your attendance.</p>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="text-center">
+            <a href="/" class="inline-block bg-custom-green hover:bg-[#007048] text-white font-semibold py-2.5 px-6 rounded-lg transition text-xs shadow-sm">
+              Return to Homepage
+            </a>
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="hidden mt-4 p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs">
+          <div class="flex items-center gap-2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span id="error-text">Failed to submit registration. Please try again.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-custom-dark-footer text-white py-6 border-t border-white/10 text-center text-xs text-gray-400 mt-auto">
+    <p>&copy; 2026 SPIN Project. Federal Ministry of Water Resources and Sanitation &bull; Supported by the World Bank.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('event-reg-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formContainer = document.getElementById('form-container');
+    const successSection = document.getElementById('success-message');
+    const errorSection = document.getElementById('error-message');
+    const errorText = document.getElementById('error-text');
+
+    const API_URL = (window.SPIN_MULTIDAY_CONFIG && window.SPIN_MULTIDAY_CONFIG.API_URL) 
+      ? window.SPIN_MULTIDAY_CONFIG.API_URL 
+      : (window.SPIN_WORKSHOP_CONFIG ? window.SPIN_WORKSHOP_CONFIG.API_URL : '');
+
+    function showConfirmation(name, isExisting) {
+      formContainer.classList.add('hidden');
+      errorSection.classList.add('hidden');
+      successSection.classList.remove('hidden');
+
+      document.getElementById('res-heading').textContent = isExisting ? 'Already Registered' : 'Registration Confirmed';
+      document.getElementById('res-name').textContent = name;
+      document.getElementById('card-name').textContent = name;
+
+      successSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const designation = document.getElementById('designation').value.trim();
+      const organization = document.getElementById('organization').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!fullName || !designation || !organization || !email || !phone) {
+        errorText.textContent = 'Please fill out all required fields.';
+        errorSection.classList.remove('hidden');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+        <span>Saving Registration...</span>
+      `;
+      errorSection.classList.add('hidden');
+
+      try {
+        const queryParams = new URLSearchParams({
+          action: 'register',
+          fullName, designation, organization, email, phone
+        }).toString();
+
+        const response = await fetch(API_URL + '?' + queryParams);
+        const result = await response.json();
+
+        if (result.success) {
+          showConfirmation(result.name || fullName, result.alreadyRegistered || false);
+        } else {
+          errorText.textContent = result.message || 'Unable to register. Please try again.';
+          errorSection.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Submit Registration</span>';
+        }
+      } catch (err) {
+        // Fallback: verify if email already exists in sheet
+        try {
+          const checkRes = await fetch(API_URL + '?action=lookup&email=' + encodeURIComponent(email));
+          const checkData = await checkRes.json();
+          if (checkData.success && checkData.name) {
+            showConfirmation(checkData.name, true);
+            return;
+          }
+        } catch (e) {}
+
+        errorText.textContent = 'Connection error. Please check your internet connection and try again.';
+        errorSection.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Submit Registration</span>';
+      }
+    });
+  </script>
+</body>
+</html>
