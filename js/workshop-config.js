@@ -1,22 +1,13 @@
 // ============================================================
-// SPIN Workshop System Configuration
+// SPIN Workshop & Event System Configuration
 // ============================================================
-// This file contains shared configuration for the workshop
-// registration and attendance system.
-//
-// DEPLOYMENT INSTRUCTIONS:
-// 1. Deploy the Google Apps Script (see apps-script/workshop-backend.gs)
-// 2. Copy the deployed Web App URL
-// 3. Replace 'YOUR_APPS_SCRIPT_WEB_APP_URL' below with the actual URL
-// 4. Do not commit the actual URL to public repositories if it contains
-//    sensitive information
+// This file contains shared configuration for workshop registration,
+// multi-day training programs, and attendance tracking systems.
 // ============================================================
 
+// Single-Day Workshop Configuration
 const SPIN_WORKSHOP_CONFIG = {
-  // Replace this with your deployed Google Apps Script Web App URL
-  //  API_URL: 'https://script.google.com/macros/s/AKfycbx56CZkvX_CAAnDWx9Q1FEBedrWizjSVBUYOGfb0rsh9NlLTyWz5uCON8JihXSPkFGO/exec',
   API_URL: 'https://script.google.com/macros/s/AKfycbx56CZkvX_CAAnDWx9Q1FEBedrWizjSVBUYOGfb0rsh9NlLTyWz5uCON8JihXSPkFGO/exec',
-  // Form types
   FORM_TYPES: {
     PRE_WORKSHOP: 'pre_workshop',
     ATTENDANCE: 'attendance',
@@ -28,7 +19,15 @@ const SPIN_WORKSHOP_CONFIG = {
   }
 };
 
-// Make the configuration available globally
+// Flexible Multi-Day Event Configuration (Dynamic Days)
+const SPIN_MULTIDAY_CONFIG = {
+  API_URL: 'https://script.google.com/macros/s/AKfycbxuu_SYoZGwI7p2t7el3TlAHO9sUfjCsUBcvJQEt1c7H7Jqd2lwwlbAtFwh08yhQ-vL/exec',
+  EVENT_NAME: 'SPIN Project Capacity Building & Technical Training',
+  EVENT_VENUE: 'Main Auditorium, FMWRS Headquarters / Apo Training Center, Abuja'
+};
+
+// Make configurations available globally
 if (typeof window !== 'undefined') {
   window.SPIN_WORKSHOP_CONFIG = SPIN_WORKSHOP_CONFIG;
+  window.SPIN_MULTIDAY_CONFIG = SPIN_MULTIDAY_CONFIG;
 }
