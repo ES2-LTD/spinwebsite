@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Bank Implementation Support Mission Agenda | SPIN Project</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/spin_logo.jpeg" />
+  <link rel="shortcut icon" href="images/spin_logo.jpeg" type="image/jpeg" />
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .tab-btn.active {
+      background-color: #008C5A;
+      color: #ffffff;
+      border-color: #008C5A;
+      box-shadow: 0 4px 12px rgba(0, 140, 90, 0.25);
+    }
+    .badge-parallel {
+      background-color: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+    .badge-plenary {
+      background-color: #E0F2FE;
+      color: #075985;
+      border: 1px solid #BAE6FD;
+    }
+    .badge-sitevisit {
+      background-color: #DCFCE7;
+      color: #166534;
+      border: 1px solid #86EFAC;
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K6HTFD29WJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K6HTFD29WJ');
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
+
+  <!-- Top Info Bar -->
+  <div class="bg-white shadow-sm border-b border-gray-100">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-2.5 flex items-center justify-between gap-4 text-sm">
+      <a href="/" class="flex items-center gap-3 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">
+        <img src="images/spin_logo.jpeg" alt="SPIN Logo" class="h-12 sm:h-14 w-auto" />
+        <span class="sr-only">Home</span>
+      </a>
+
+      <div class="flex items-center space-x-6 md:space-x-8 text-gray-700 text-xs sm:text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="h-5 w-5 text-custom-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <div class="hidden sm:block">
+            <p class="text-xs text-gray-500">Inquiries</p>
+            <p class="font-semibold text-black">+234 803 443 2501</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="h-5 w-5 text-custom-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.893-3.893 7.893 3.893a2 2 0 011.107 1.776v7.351a2 2 0 01-2 2H4a2 2 0 01-2-2v-7.351a2 2 0 011.107-1.776zM4 8l8 5 8-5"/></svg>
+          <div class="hidden sm:block">
+            <p class="text-xs text-gray-500">Official Email</p>
+            <p class="font-semibold text-black">info@spinproject.ng</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="bg-custom-green sticky top-0 z-50 shadow">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 h-14 relative flex items-center justify-between xl:grid" style="grid-template-columns: 1fr auto 1fr;">
+      <div class="hidden xl:block"></div>
+
+      <nav aria-label="Primary" class="hidden xl:flex justify-center items-center gap-4 2xl:gap-6 text-[0.85rem] 2xl:text-[0.95rem] font-semibold relative whitespace-nowrap">
+        <a href="/" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Home</a>
+        <a href="/about" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">About us</a>
+        <a href="/mandate" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Mandate</a>
+        <a href="/advertisements" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Advertisements</a>
+        <a href="/news" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
+        <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Participating States</a>
+        <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
+        <a href="/mission-agenda.html" class="text-[#aaff33] border-b-2 border-[#aaff33] px-1.5">Mission Agenda</a>
+        <a href="/grievance" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Grievance</a>
+        <a href="/contact" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Contact</a>
+      </nav>
+
+      <div class="hidden xl:flex justify-end items-center">
+        <a href="docs/Mission agenda (2).pdf" download class="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white text-xs font-bold px-3 py-1.5 rounded-full border border-white/30 transition">
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-button" class="xl:hidden text-white hover:text-white/90 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m0 6H4"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="xl:hidden hidden border-t border-white/20 bg-custom-green/95 backdrop-blur">
+      <div class="max-w-screen-2xl mx-auto px-4 py-3 space-y-1 text-white/95">
+        <a href="/" class="block py-2">Home</a>
+        <a href="/about" class="block py-2">About us</a>
+        <a href="/mandate" class="block py-2">Mandate</a>
+        <a href="/advertisements" class="block py-2">Advertisements</a>
+        <a href="/news" class="block py-2">News</a>
+        <a href="/participating-states" class="block py-2">Participating States</a>
+        <a href="/gallery" class="block py-2">Gallery</a>
+        <a href="/mission-agenda.html" class="block py-2 font-bold text-[#aaff33]">Mission Agenda</a>
+        <a href="/grievance" class="block py-2">Grievance</a>
+        <a href="/contact" class="block py-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="relative w-full bg-cover bg-center py-16 sm:py-20" style="background-image: url('images/solar2.jpg');">
+    <div class="absolute inset-0 bg-gradient-to-r from-green-950/95 via-green-900/90 to-green-800/80 mix-blend-multiply"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-xs sm:text-sm mb-4">
+        <span>Federal Ministry of Water Resources &amp; Sanitation</span>
+        <span class="text-white/40">&bull;</span>
+        <span class="text-[#aaff33] font-semibold">The World Bank</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+        World Bank Implementation Support Mission
+      </h1>
+      <p class="mt-3 text-base sm:text-lg md:text-xl text-gray-200 max-w-3xl mx-auto font-medium">
+        Sustainable Power and Irrigation for Nigeria (SPIN) Project &bull; Comprehensive Mission Agenda &amp; Program of Events
+      </p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm">
+        <span class="bg-black/30 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+          📅 November 22 – December 5, 2026
+        </span>
+        <span class="bg-black/30 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+          📍 Abuja, Kano, Jigawa &amp; Bauchi
+        </span>
+        <a href="docs/Mission agenda (2).pdf" download class="inline-flex items-center gap-1.5 bg-[#aaff33] text-gray-950 font-bold px-4 py-1.5 rounded-full hover:bg-lime-400 transition shadow">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download Original Agenda (PDF)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Program Section -->
+  <main class="flex-1 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+    <!-- Overview Highlights Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+      <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+        <div class="text-xs font-bold uppercase tracking-wider text-custom-green mb-1">Week 1: Days 1–3</div>
+        <h4 class="font-bold text-gray-900 text-base">FPMU &amp; SPIUs Sessions</h4>
+        <p class="text-xs text-gray-600 mt-1">Review of progress, state-by-state work plans across 10 states, and parallel breakout deep dives.</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+        <div class="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1">Week 1: Day 4</div>
+        <h4 class="font-bold text-gray-900 text-base">Water Intelligence</h4>
+        <p class="text-xs text-gray-600 mt-1">Workshop on Nigeria Water Intelligence Platform and JICA co-financing opportunities.</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+        <div class="text-xs font-bold uppercase tracking-wider text-amber-600 mb-1">Week 1–2: Days 5–7</div>
+        <h4 class="font-bold text-gray-900 text-base">Site Field Visits</h4>
+        <p class="text-xs text-gray-600 mt-1">On-site inspections at Tiga Dam, Kano, Jigawa, and Bauchi schemes; Hands-on FM support.</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+        <div class="text-xs font-bold uppercase tracking-wider text-purple-600 mb-1">Week 2: Days 8–10</div>
+        <h4 class="font-bold text-gray-900 text-base">Stocktaking &amp; Wrap-Up</h4>
+        <p class="text-xs text-gray-600 mt-1">MTR planning, FLID delivery, front-runner works troubleshooting, and Minister briefing.</p>
+      </div>
+    </div>
+
+    <!-- Filter / Day Selector Controls -->
+    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 mb-8">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold text-gray-900">Select Schedule View</h2>
+          <p class="text-xs text-gray-500">Filter the mission by day or view the complete chronological sequence</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="text" id="schedule-search" placeholder="Search sessions, topics or states..." class="w-full sm:w-64 px-3.5 py-2 text-xs border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-custom-green" />
+        </div>
+      </div>
+
+      <!-- Day Tabs -->
+      <div class="flex flex-wrap gap-2 text-xs font-semibold" id="day-tabs">
+        <button class="tab-btn active px-3.5 py-2 rounded-xl border border-gray-200 transition" onclick="showSchedule('all', this)">All Schedule</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-sun22', this)">Sun Nov 22</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-mon23', this)">Mon Nov 23</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-tue24', this)">Tue Nov 24</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-wed25', this)">Wed Nov 25</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-thu26', this)">Thu Nov 26</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-fri27', this)">Fri Nov 27</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-sat28', this)">Sat Nov 28</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-mon30', this)">Mon Nov 30</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-tue01', this)">Tue Dec 1</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-wed02', this)">Wed Dec 2</button>
+        <button class="tab-btn px-3.5 py-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 transition" onclick="showSchedule('day-thu03', this)">Thu–Sat Dec 3–5</button>
+      </div>
+    </div>
+
+    <!-- SCHEDULE DAYS CONTAINER -->
+    <div id="schedule-container" class="space-y-8">
+
+      <!-- ==================== SUNDAY, NOV 22 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-sun22">
+        <div class="bg-gray-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-custom-green flex items-center justify-center font-black text-sm">22</span>
+            <div>
+              <h3 class="font-extrabold text-base">Sunday, November 22, 2026</h3>
+              <p class="text-xs text-gray-300">Delegates Arrival &amp; Check-In</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-white/10 font-medium">Abuja</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+            <div class="text-xs font-bold text-gray-500 w-24 shrink-0">ALL DAY</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Arrival of Mission Members in Abuja</h4>
+              <p class="text-xs text-gray-600 mt-1">Arrival of World Bank Task Team members, Model 1 Focal Officers, and representatives of River Basin Development Authorities (RBDAs).</p>
+            </div>
+            <span class="text-xs text-gray-400 font-semibold hidden sm:inline">Abuja</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== MONDAY, NOV 23 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-mon23">
+        <div class="bg-custom-green text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white text-custom-green flex items-center justify-center font-black text-sm">23</span>
+            <div>
+              <h3 class="font-extrabold text-base">Monday, November 23, 2026</h3>
+              <p class="text-xs text-green-100">Day 1: FPMU Progress Review &amp; Thematic Sessions</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-black/20 font-medium">FPMU Focused</span>
+        </div>
+
+        <div class="p-6 divide-y divide-gray-100 space-y-4">
+          <!-- Session 1 -->
+          <div class="pt-4 first:pt-0 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">08:00 – 10:00</div>
+            <div class="flex-1">
+              <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded badge-plenary mb-1">Plenary</span>
+              <h4 class="font-bold text-gray-900 text-sm">Registration &amp; Tea Break</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Participants: All attendees. FPMU to advise on meeting venue.</p>
+            </div>
+          </div>
+
+          <!-- Session 2 -->
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">10:00 – 10:30</div>
+            <div class="flex-1">
+              <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded badge-plenary mb-1">Opening</span>
+              <h4 class="font-bold text-gray-900 text-sm">Welcome &amp; Mission Overview</h4>
+              <ul class="text-xs text-gray-600 mt-1 space-y-1 list-disc list-inside">
+                <li><strong>10:00 – 10:15:</strong> Welcome Remarks by National Project Coordinator (NPC).</li>
+                <li><strong>10:15 – 10:30:</strong> Opening Remarks &amp; Overview of Mission, Objectives, and Expected Outputs by TTLs / World Bank Team.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Session 3 -->
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">10:30 – 13:00</div>
+            <div class="flex-1">
+              <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded badge-plenary mb-1">Presentation</span>
+              <h4 class="font-bold text-gray-900 text-sm">Progress Update Since Last Mission &amp; Agreed Actions Review</h4>
+              <p class="text-xs text-gray-600 mt-1">Lead: <strong>FPMU</strong></p>
+              <ul class="text-xs text-gray-600 mt-1.5 space-y-1 list-disc list-inside">
+                <li>Presentation of Progress Report on SPIN Project Implementation.</li>
+                <li>Technical readiness and proposed selection of irrigation schemes.</li>
+                <li>Review of agreed actions, achievements, and disbursement trajectory.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Lunch -->
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4 bg-amber-50/50 p-3 rounded-xl border border-amber-100">
+            <div class="text-xs font-bold text-amber-700 bg-amber-100 px-2.5 py-1.5 rounded-lg w-32 shrink-0 text-center">13:00 – 14:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-amber-900 text-sm">Lunch Break</h4>
+              <p class="text-xs text-amber-800">All Participants</p>
+            </div>
+          </div>
+
+          <!-- Parallel Afternoon Sessions -->
+          <div class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl border border-gray-200 bg-gray-50/70">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded badge-parallel">Parallel Session A</span>
+                <span class="text-xs font-bold text-custom-green">14:00 – 17:00</span>
+              </div>
+              <h5 class="font-bold text-gray-900 text-sm">Water User Associations (WUA)</h5>
+              <p class="text-xs text-gray-500 mt-0.5">Participants: FPMU &amp; Task Team</p>
+              <ul class="text-xs text-gray-600 mt-2 space-y-1 list-disc list-inside">
+                <li>WUA legislation and regulatory framework</li>
+                <li>Irrigation Service Fees (ISF) cost recovery mechanism</li>
+                <li>Integrating Farmer-Led Irrigation Development (FLID) farmers</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-xl border border-gray-200 bg-gray-50/70">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded badge-parallel">Parallel Session B</span>
+                <span class="text-xs font-bold text-custom-green">14:00 – 17:00</span>
+              </div>
+              <h5 class="font-bold text-gray-900 text-sm">Hydropower &amp; PPP Activities</h5>
+              <p class="text-xs text-gray-500 mt-0.5">Lead: Pravin &bull; Participants: FPMU &amp; Task Team</p>
+              <ul class="text-xs text-gray-600 mt-2 space-y-1 list-disc list-inside">
+                <li>Progress on Hydropower Master Plan (HMP) &amp; SESA</li>
+                <li>PPP Guidelines and transaction structure</li>
+                <li>Next steps for PPP Transaction Advisory recruitment</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Day 1 Wrap -->
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-gray-700 bg-gray-100 px-2.5 py-1.5 rounded-lg w-32 shrink-0 text-center">17:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Day 1 Closing Remarks &amp; Housekeeping</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Lead: NPC / TTLs &bull; Note: Arrival of State Project Implementation Units (SPIUs) in Abuja.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TUESDAY, NOV 24 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-tue24">
+        <div class="bg-custom-green text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white text-custom-green flex items-center justify-center font-black text-sm">24</span>
+            <div>
+              <h3 class="font-extrabold text-base">Tuesday, November 24, 2026</h3>
+              <p class="text-xs text-green-100">Day 2: Participating States Progress Reports &amp; Work Plans</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-black/20 font-medium">10 Participating States</span>
+        </div>
+
+        <div class="p-6 divide-y divide-gray-100 space-y-4">
+          <div class="pt-2 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">08:00 – 10:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Registration &amp; Opening of State Presentations</h4>
+              <p class="text-xs text-gray-600 mt-0.5">08:00 – 09:45: Registration &amp; Tea Break &bull; 09:45 – 10:00: Stage setting by NPC/TTLs.</p>
+            </div>
+          </div>
+
+          <!-- State Presentation Grid -->
+          <div class="pt-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">State Progress Presentations (30 mins per State: Presentation + Work Plan updates):</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">10:00 – 10:30</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Kano State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">10:30 – 11:00</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Gombe State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">11:00 – 11:30</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Jigawa State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">11:30 – 12:00</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Kaduna State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">12:00 – 12:30</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Katsina State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">12:30 – 13:00</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Cross River State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+            </div>
+
+            <!-- Lunch -->
+            <div class="my-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-center text-xs font-bold text-amber-900">
+              13:00 – 14:00 &bull; Lunch Break (All Participants)
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">14:00 – 14:30</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Taraba State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">14:30 – 15:00</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Yobe State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">15:00 – 15:30</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Niger State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">15:30 – 16:00</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Sokoto State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">16:00 – 16:30</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Zamfara State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-green-50/50 transition">
+                <span class="text-xs font-bold text-custom-green">16:30 – 17:00</span>
+                <h5 class="font-extrabold text-gray-900 text-sm mt-1">Kebbi State</h5>
+                <p class="text-[11px] text-gray-500">Progress Report &amp; Work Plan updates</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== WEDNESDAY, NOV 25 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-wed25">
+        <div class="bg-custom-green text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white text-custom-green flex items-center justify-center font-black text-sm">25</span>
+            <div>
+              <h3 class="font-extrabold text-base">Wednesday, November 25, 2026</h3>
+              <p class="text-xs text-green-100">Day 3: State-by-State Thematic Breakout Sessions</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-black/20 font-medium">Deep Dive Tracks</span>
+        </div>
+
+        <div class="p-6 space-y-6">
+          <div class="text-xs text-gray-500 font-medium">08:00 – 10:00: Registration &amp; Morning Tea Break (All)</div>
+
+          <!-- Morning Parallel Sessions -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Procurement -->
+            <div class="p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/40">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">Parallel Track 1 (Morning)</span>
+                <span class="text-xs font-extrabold text-blue-900">10:00 – 13:00</span>
+              </div>
+              <h4 class="font-extrabold text-gray-900 text-base">Procurement Deep Dive</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Participants: FPMU POs, SPCs + SPOs and WB Procurement Specialist</p>
+              <ul class="text-xs text-gray-700 mt-3 space-y-1.5 list-disc list-inside">
+                <li>Review of Project Procurement Strategy for Development (PPSD) and needed updates.</li>
+                <li>Hands-on support and stocktaking of procurement actions in STEP.</li>
+                <li>Resolution and clearance of red-flagged activities.</li>
+              </ul>
+            </div>
+
+            <!-- E&S -->
+            <div class="p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50/40">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800">Parallel Track 2 (Morning)</span>
+                <span class="text-xs font-extrabold text-emerald-900">10:00 – 13:00</span>
+              </div>
+              <h4 class="font-extrabold text-gray-900 text-base">Environmental &amp; Social (E&amp;S) Deep Dive</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Participants: FPMU E&amp;S, WB E&amp;S, SPIU (E&amp;S, Gender, Engineers)</p>
+              <ul class="text-xs text-gray-700 mt-3 space-y-1.5 list-disc list-inside">
+                <li>Stocktaking of E&amp;S instrument preparation under Model 1 and Model 2.</li>
+                <li>Bakalori Irrigation Scheme: ESIA &amp; Resettlement Action Plan (RAP).</li>
+                <li>Security Management Plan (SMP) review &amp; risk mitigations.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-center text-xs font-bold text-amber-900">
+            13:00 – 14:00 &bull; Lunch Break (All Participants)
+          </div>
+
+          <!-- Afternoon Parallel Sessions -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- FM -->
+            <div class="p-5 rounded-2xl border-2 border-purple-200 bg-purple-50/40">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-purple-100 text-purple-800">Parallel Track 3 (Afternoon)</span>
+                <span class="text-xs font-extrabold text-purple-900">14:00 – 17:00</span>
+              </div>
+              <h4 class="font-extrabold text-gray-900 text-base">Financial Management Deep Dive</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Participants: WB FM, FPMU FM Team and SPIUs FM Team</p>
+              <ul class="text-xs text-gray-700 mt-3 space-y-1.5 list-disc list-inside">
+                <li>FM reporting guidelines, compliance &amp; audit standards.</li>
+                <li>Client Connection &amp; documentation of expenditures.</li>
+                <li>Advances to Designated Accounts &amp; disbursement forecast modeling.</li>
+              </ul>
+            </div>
+
+            <!-- Dam Safety -->
+            <div class="p-5 rounded-2xl border-2 border-rose-200 bg-rose-50/40">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-rose-100 text-rose-800">Parallel Track 4 (Afternoon)</span>
+                <span class="text-xs font-extrabold text-rose-900">14:00 – 17:00</span>
+              </div>
+              <h4 class="font-extrabold text-gray-900 text-base">Dam Safety Work Program</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Team: FPMU, DRO, SPIUs, Task Team with John Pisanello, Andy Zielinski &amp; Rich O'Donnelly (Virtual)</p>
+              <ul class="text-xs text-gray-700 mt-3 space-y-1.5 list-disc list-inside">
+                <li>Regulatory Gap Assessment, DDAMs, RISIN, guidelines &amp; capacity building.</li>
+                <li>Dam Safety Panel of Experts (DSPOE) Reports &amp; dam safety action plans.</li>
+                <li>ESS4 Dam Safety Instruments; consulting &amp; works procurement updates.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== THURSDAY, NOV 26 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-thu26">
+        <div class="bg-gray-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-custom-green flex items-center justify-center font-black text-sm">26</span>
+            <div>
+              <h3 class="font-extrabold text-base">Thursday, November 26, 2026</h3>
+              <p class="text-xs text-gray-300">Day 4: Nigeria Water Intelligence Platform &amp; Partnerships</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-white/10 font-medium">Plenary Workshop</span>
+        </div>
+
+        <div class="p-6">
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 via-white to-green-50 border border-blue-200">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <span class="text-xs font-bold text-blue-800 uppercase tracking-wider bg-blue-100 px-3 py-1 rounded-full">ALL DAY WORKSHOP</span>
+              <span class="text-xs font-semibold text-gray-500">Leads: Yo and Willi</span>
+            </div>
+            <h4 class="text-xl font-extrabold text-gray-900">Workshop on Nigeria Water Intelligence Platform</h4>
+            <p class="text-sm text-gray-700 mt-2 leading-relaxed">
+              Full-day technical session bringing together all project stakeholders, task team specialists, and external development partners.
+            </p>
+            <div class="mt-4 p-4 rounded-xl bg-white border border-gray-200 shadow-sm">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-custom-green mb-1">Key Focus &amp; Co-Financing:</h5>
+              <p class="text-xs text-gray-700 leading-relaxed">
+                • <strong>JICA Presentation:</strong> Japan International Cooperation Agency framework and concrete opportunities for co-financing large-scale water management and irrigation modernization initiatives in Nigeria.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== FRIDAY, NOV 27 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-fri27">
+        <div class="bg-custom-green text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white text-custom-green flex items-center justify-center font-black text-sm">27</span>
+            <div>
+              <h3 class="font-extrabold text-base">Friday, November 27, 2026</h3>
+              <p class="text-xs text-green-100">Day 5: Hands-on FM Support &amp; Northern Field Mission Launch</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-black/20 font-medium">Parallel Field &amp; FM Tracks</span>
+        </div>
+
+        <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl border border-gray-200 bg-gray-50">
+            <span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded bg-purple-100 text-purple-800">Track 1 &bull; ALL DAY (Abuja)</span>
+            <h4 class="font-bold text-gray-900 text-base mt-2">Financial Management — Hands-on Support</h4>
+            <p class="text-xs text-gray-600 mt-1">Location: <strong>World Bank Office, Abuja</strong></p>
+            <p class="text-xs text-gray-700 mt-2 leading-relaxed">
+              Intensive technical clinic conducted through the World Bank FM Specialist with WB FM, FPMU FM Team, and SPIUs FM Team.
+            </p>
+            <div class="mt-3 text-[11px] text-gray-500 italic">
+              13:00 – 15:00: Extended Lunch and Prayer Break.
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-gray-200 bg-green-50/50">
+            <span class="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded badge-sitevisit">Track 2 &bull; ALL DAY (Field)</span>
+            <h4 class="font-bold text-gray-900 text-base mt-2">Field Site Visits Launch: Tiga Dam &amp; Schemes</h4>
+            <p class="text-xs text-gray-600 mt-1">Location: <strong>Kano, Jigawa &amp; Bauchi (Base: Kano)</strong></p>
+            <p class="text-xs text-gray-700 mt-2 leading-relaxed">
+              FPMU Representatives and Task Team depart for Kano as operational base to assess dam integrity, irrigation structures, and command areas at Tiga Dam.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SATURDAY & SUNDAY, NOV 28–29 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-sat28">
+        <div class="bg-gray-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-custom-green flex items-center justify-center font-black text-sm">28</span>
+            <div>
+              <h3 class="font-extrabold text-base">Saturday 28 – Sunday 29 November, 2026</h3>
+              <p class="text-xs text-gray-300">Days 6 &amp; 7: Comprehensive Field Assessments &amp; Return to Base</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-white/10 font-medium">Field Inspections</span>
+        </div>
+
+        <div class="p-6 space-y-4">
+          <div class="p-4 rounded-xl border border-gray-200 bg-gray-50">
+            <div class="flex items-center justify-between mb-1">
+              <h4 class="font-bold text-gray-900 text-sm">Saturday, November 28, 2026 — ALL DAY SITE VISITS</h4>
+              <span class="text-xs font-semibold text-custom-green">Base: Kano</span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed">
+              Field inspection of irrigation infrastructure and hydraulic works across Tiga Dam, Kano, Jigawa, and Bauchi schemes by FPMU &amp; Bank Task Team. Departures for all SPIUs back to respective state headquarters.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-gray-200 bg-gray-50">
+            <div class="flex items-center justify-between mb-1">
+              <h4 class="font-bold text-gray-900 text-sm">Sunday, November 29, 2026 — Return Transit</h4>
+              <span class="text-xs font-semibold text-gray-500">Kano &rarr; Abuja</span>
+            </div>
+            <p class="text-xs text-gray-700 leading-relaxed">
+              Federal Monitoring delegation and World Bank Mission members return to Abuja.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== MONDAY, NOV 30 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-mon30">
+        <div class="bg-custom-green text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white text-custom-green flex items-center justify-center font-black text-sm">30</span>
+            <div>
+              <h3 class="font-extrabold text-base">Monday, November 30, 2026</h3>
+              <p class="text-xs text-green-100">Day 8: Field Findings Stocktaking &amp; M&amp;E System Upgrades</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-black/20 font-medium">Debrief &amp; M&amp;E</span>
+        </div>
+
+        <div class="p-6 divide-y divide-gray-100 space-y-4">
+          <div class="pt-2 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">09:00 – 11:00</div>
+            <div class="flex-1">
+              <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded badge-plenary mb-1">Technical Stocktaking</span>
+              <h4 class="font-bold text-gray-900 text-sm">Taking Stock of Site Visit Findings</h4>
+              <p class="text-xs text-gray-600 mt-1">Participants: FPMU and Task Team</p>
+              <ul class="text-xs text-gray-600 mt-1 space-y-1 list-disc list-inside">
+                <li>Technical Readiness of surveyed dams and irrigation perimeters</li>
+                <li>Environmental &amp; Social (E&amp;S) Readiness</li>
+                <li>Dam Safety Readiness &amp; Emergency Action Plans (EAPs)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-gray-700 bg-gray-100 px-2.5 py-1.5 rounded-lg w-32 shrink-0 text-center">11:00 – 13:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Continued Discussion / Free Technical Slot</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Deep-dive on scheme-specific hydraulic bottlenecks.</p>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">14:00 – 17:00</div>
+            <div class="flex-1">
+              <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded badge-plenary mb-1">M&amp;E Focus</span>
+              <h4 class="font-bold text-gray-900 text-sm">Finalize Discussion on SPIN M&amp;E System Improvement Needs</h4>
+              <p class="text-xs text-gray-600 mt-1">Lead: Qiong &bull; Participants: FPMU M&amp;E, Task Team</p>
+              <p class="text-xs text-gray-700 mt-1 leading-relaxed">
+                Approach to M&amp;E system improvements, core results monitoring indicators, evidence-based data collection, and adaptive decision-making protocols.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TUESDAY, DEC 1 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-tue01">
+        <div class="bg-custom-green text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white text-custom-green flex items-center justify-center font-black text-sm">01</span>
+            <div>
+              <h3 class="font-extrabold text-base">Tuesday, December 1, 2026</h3>
+              <p class="text-xs text-green-100">Day 9: Planning 2027, MTR Preparation &amp; Aide Memoire Drafting</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-black/20 font-medium">Strategic Planning</span>
+        </div>
+
+        <div class="p-6 divide-y divide-gray-100 space-y-4">
+          <div class="pt-2 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">09:00 – 12:00</div>
+            <div class="flex-1">
+              <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded badge-plenary mb-1">Planning 2027</span>
+              <h4 class="font-bold text-gray-900 text-sm">Stock Taking of Mission &amp; Planning 2027</h4>
+              <p class="text-xs text-gray-600 mt-1">Participants: FPMU and Task Team</p>
+              <ul class="text-xs text-gray-600 mt-1 space-y-1 list-disc list-inside">
+                <li>Agreed Actions matrix &amp; disbursement forecast modeling for 2027.</li>
+                <li>Approach to upcoming Mid-Term Review (MTR).</li>
+                <li>FLID delivery approach and full integration into the SPIN framework.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-blue-800 bg-blue-50 px-2.5 py-1.5 rounded-lg border border-blue-200 w-32 shrink-0 text-center">12:00 – 13:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Private Sector Mobilization</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Lead: Jonathan &bull; Participants: Task Team</p>
+              <p class="text-xs text-gray-700 mt-1 leading-relaxed">
+                Strategies to crowd in private capital and enterprise participation for Water Resources Management (WRM), dam operations, and commercial irrigation value chains.
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-purple-800 bg-purple-50 px-2.5 py-1.5 rounded-lg border border-purple-200 w-32 shrink-0 text-center">14:00 – 17:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Drafting of Mission Aide Memoire</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Collaborative session between Bank Task Team &amp; FPMU management.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== WEDNESDAY, DEC 2 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-wed02">
+        <div class="bg-custom-green text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-white text-custom-green flex items-center justify-center font-black text-sm">02</span>
+            <div>
+              <h3 class="font-extrabold text-base">Wednesday, December 2, 2026</h3>
+              <p class="text-xs text-green-100">Day 10: Front Runner Works Troubleshooting &amp; High-Level Wrap-Up</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-black/20 font-medium">Ministerial Wrap-up</span>
+        </div>
+
+        <div class="p-6 divide-y divide-gray-100 space-y-4">
+          <div class="pt-2 p-4 rounded-xl border border-amber-200 bg-amber-50/60">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-bold text-amber-900 uppercase">ALL DAY (Flexible Scheduling)</span>
+              <span class="text-xs text-amber-800 font-semibold">Virtual Connection for SPIUs</span>
+            </div>
+            <h4 class="font-extrabold text-gray-900 text-base">Troubleshoot Front Runner Works Activities</h4>
+            <p class="text-xs text-gray-700 mt-1 leading-relaxed">
+              Design-Build packages review and blocker clearance for priority schemes: <strong>Jakara, Balanga, Kangimi, Warwade, etc.</strong>
+            </p>
+            <p class="text-[11px] text-gray-500 mt-1">Participants: FPMU, State Project Coordinators (SPCs), and Task Team.</p>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">10:00 – 11:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Mission Wrap-Up with Ministry Directors</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Director of Irrigation, Director of Dams and Reservoir Operations, and Director of Rural and Renewable Power Access.</p>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-custom-green bg-green-50 px-2.5 py-1.5 rounded-lg border border-green-200 w-32 shrink-0 text-center">TBC</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">High-Level Executive Briefings</h4>
+              <ul class="text-xs text-gray-600 mt-1 space-y-1 list-disc list-inside">
+                <li>Meeting with <strong>Honourable Minister</strong>, Federal Ministry of Water Resources &amp; Sanitation (FMWR&amp;S).</li>
+                <li>Meeting with International Economic Relations (IER), Federal Ministry of Finance.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-start gap-4">
+            <div class="text-xs font-bold text-gray-700 bg-gray-100 px-2.5 py-1.5 rounded-lg w-32 shrink-0 text-center">16:00 – 17:00</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-gray-900 text-sm">Official Wrap-Up with PMU</h4>
+              <p class="text-xs text-gray-600 mt-0.5">FPMU and Task Team formal conclusion of technical mission sessions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== THU-SAT, DEC 3-5 ==================== -->
+      <section class="schedule-day bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" id="day-thu03">
+        <div class="bg-gray-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-custom-green flex items-center justify-center font-black text-sm">3–5</span>
+            <div>
+              <h3 class="font-extrabold text-base">Thursday 3 – Saturday 5 December, 2026</h3>
+              <p class="text-xs text-gray-300">Finalization &amp; Mission Closure</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-white/10 font-medium">Internal Bank Office</span>
+        </div>
+
+        <div class="p-6">
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-200">
+            <h4 class="font-bold text-gray-900 text-sm">Finalization of Aide Memoire &amp; Departures</h4>
+            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+              Task Team internal sessions at the World Bank Country Office for final synthesis, legal covenants review, and formal transmission of the Mission Aide Memoire to the Federal Government of Nigeria.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-custom-dark-footer text-white mt-16">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 border-b border-white/10 pb-8 mb-8">
+        <div>
+          <div class="flex items-center space-x-3 mb-3">
+            <img src="images/spin_logo.jpeg" alt="SPIN Project Logo" class="w-12 h-12 object-contain rounded" />
+            <h3 class="text-xl font-extrabold tracking-wider text-[#aaff33]">SPIN Project</h3>
+          </div>
+          <p class="text-sm text-gray-300">
+            Sustainable Power and Irrigation for Nigeria — building a resilient future through integrated water and energy solutions.
+          </p>
+        </div>
+
+        <nav aria-label="Quick Links">
+          <h4 class="text-base font-bold mb-3">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/about" class="text-gray-300 hover:text-[#aaff33]">About Us</a></li>
+            <li><a href="/mandate" class="text-gray-300 hover:text-[#aaff33]">Mandate</a></li>
+            <li><a href="/participating-states" class="text-gray-300 hover:text-[#aaff33]">Participating States</a></li>
+            <li><a href="/advertisements" class="text-gray-300 hover:text-[#aaff33]">Procurement &amp; Ads</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Resources">
+          <h4 class="text-base font-bold mb-3">Mission Documents</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="docs/Mission agenda (2).pdf" download class="text-gray-300 hover:text-[#aaff33]">Download Agenda (PDF)</a></li>
+            <li><a href="/news" class="text-gray-300 hover:text-[#aaff33]">News &amp; Media Updates</a></li>
+            <li><a href="/gallery" class="text-gray-300 hover:text-[#aaff33]">Photo &amp; Video Gallery</a></li>
+            <li><a href="/grievance" class="text-gray-300 hover:text-[#aaff33]">Grievance Redress (GRM)</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <h4 class="text-base font-bold mb-3">Federal Project Management Unit</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Federal Ministry of Water Resources &amp; Sanitation<br>
+            Plot 1402 Abba Kyari Street, Off Adesoji Aderemi Street, Apo, Abuja-FCT, Nigeria.
+          </p>
+          <p class="mt-3 text-xs text-gray-400">Email: <a href="mailto:info@spinproject.ng" class="hover:text-[#aaff33]">info@spinproject.ng</a></p>
+        </div>
+      </div>
+
+      <p class="text-center text-sm text-gray-400">&copy; 2026 SPIN Project. Supported by the World Bank.<br> Developed by <a href="https://es2.com.ng" target="_blank" class="text-[#aaff33] hover:underline">ES2 LIMITED</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const menuPanel = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => {
+      menuPanel.classList.toggle('hidden');
+    });
+
+    // Schedule Day Filter
+    function showSchedule(targetId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.classList.add('bg-gray-50', 'text-gray-700');
+      });
+      btn.classList.add('active');
+      btn.classList.remove('bg-gray-50', 'text-gray-700');
+
+      const days = document.querySelectorAll('.schedule-day');
+      if (targetId === 'all') {
+        days.forEach(d => d.style.display = 'block');
+      } else {
+        days.forEach(d => {
+          d.style.display = (d.id === targetId) ? 'block' : 'none';
+        });
+      }
+    }
+
+    // Schedule live search filter
+    const searchInput = document.getElementById('schedule-search');
+    searchInput?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const days = document.querySelectorAll('.schedule-day');
+      
+      days.forEach(day => {
+        const text = day.innerText.toLowerCase();
+        if (q === '' || text.includes(q)) {
+          day.style.display = 'block';
+        } else {
+          day.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
