@@ -93,11 +93,11 @@
         <span class="font-bold text-gray-700 uppercase tracking-wider text-[11px]">Training Schedule Dates:</span>
         <span class="text-gray-500 text-[11px] flex items-center gap-1 font-medium">
           <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          Select an available day to take attendance
+          Click any day to view or record attendance
         </span>
       </div>
 
-      <!-- Quick Date Pills (Dynamically rendered based on current date) -->
+      <!-- Quick Date Pills (All days open for desk officers) -->
       <div class="flex items-center gap-1.5 overflow-x-auto pb-1" id="date-pills-list">
         <!-- Rendered by JS -->
       </div>
@@ -286,22 +286,16 @@
       return `${yr}-${mo}-${da}`;
     }
 
-    // ── Initialize Dynamic Date Selector ────────────────────────
+    // ── Initialize Date Selector (All days open for desk officers) ────────
     function initDateSelector() {
       todayIso = getTodayWAT();
 
-      // Find matching today, or fallback to latest available date
+      // Default active day: Today if within event, otherwise default to first day
       const todayMatch = EVENT_DAYS.find(d => d.iso === todayIso);
       if (todayMatch) {
         activeDate = todayMatch.label;
       } else {
-        // If before event, pick first; if after event, pick today or latest unlocked
-        const pastOrToday = EVENT_DAYS.filter(d => d.iso <= todayIso);
-        if (pastOrToday.length > 0) {
-          activeDate = pastOrToday[pastOrToday.length - 1].label;
-        } else {
-          activeDate = EVENT_DAYS[0].label;
-        }
+        activeDate = EVENT_DAYS[0].label;
       }
 
       renderDatePills();
@@ -320,7 +314,6 @@
 
       EVENT_DAYS.forEach(d => {
         const isToday = d.iso === todayIso;
-        const isUnlocked = d.iso <= todayIso;
         const isSelected = d.label === activeDate;
 
         const btn = document.createElement('button');
@@ -328,15 +321,12 @@
         btn.dataset.date = d.label;
         btn.dataset.iso = d.iso;
 
-        let baseClasses = 'px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 ';
+        let baseClasses = 'px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 cursor-pointer ';
 
         if (isSelected) {
           baseClasses += 'bg-[#008C5A] text-white shadow-sm ring-2 ring-[#008C5A]/30 ';
-        } else if (isUnlocked) {
-          baseClasses += 'bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-[#008C5A] border border-gray-200 ';
         } else {
-          baseClasses += 'bg-gray-50 text-gray-400 border border-gray-100 opacity-60 cursor-not-allowed ';
-          btn.title = `Locked: Scheduled for ${d.label} 2026`;
+          baseClasses += 'bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-[#008C5A] border border-gray-200 ';
         }
 
         btn.className = baseClasses;
@@ -344,24 +334,18 @@
         let content = `<span>${d.label}</span>`;
         if (isToday) {
           content += `<span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider ${isSelected ? 'bg-white/25 text-white' : 'bg-emerald-100 text-emerald-800'}">Today</span>`;
-        } else if (!isUnlocked) {
-          content += `<svg class="h-3 w-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>`;
         }
 
         btn.innerHTML = content;
 
-        if (isUnlocked) {
-          btn.addEventListener('click', () => {
-            if (activeDate === d.label) return;
-            activeDate = d.label;
-            renderDatePills();
-            updateActiveDayDisplay();
-            renderParticipants();
-            loadStats();
-          });
-        } else {
-          btn.disabled = true;
-        }
+        btn.addEventListener('click', () => {
+          if (activeDate === d.label) return;
+          activeDate = d.label;
+          renderDatePills();
+          updateActiveDayDisplay();
+          renderParticipants();
+          loadStats();
+        });
 
         datePillsList.appendChild(btn);
       });
