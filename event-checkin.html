@@ -63,14 +63,19 @@
       <div>
         <span class="text-[10px] uppercase tracking-wider text-emerald-200 font-bold block">Attendance Station</span>
         <h1 class="text-base sm:text-lg font-bold flex items-center gap-2">
-          Check-In: <span id="active-day-display" class="bg-white/15 px-2.5 py-0.5 rounded text-sm font-semibold tracking-wide">23 Nov (Today)</span>
+          Day: <span id="active-day-display" class="bg-white/15 px-2.5 py-0.5 rounded text-sm font-semibold tracking-wide">24 Nov (Today)</span>
         </h1>
       </div>
 
-      <div class="flex items-center gap-3 bg-emerald-950/25 px-3.5 py-1.5 rounded-xl border border-white/10 text-xs sm:text-sm">
+      <div class="flex items-center gap-2 sm:gap-3 bg-emerald-950/25 px-3 py-1.5 rounded-xl border border-white/10 text-xs sm:text-sm">
         <div>
-          <span class="text-emerald-200 block text-[10px] uppercase font-semibold">Checked In Today</span>
+          <span class="text-emerald-200 block text-[10px] uppercase font-semibold" id="stat-day-label">Checked In (24 Nov)</span>
           <span id="stat-day-count" class="font-extrabold text-white text-base">0</span>
+        </div>
+        <div class="w-px h-6 bg-white/20"></div>
+        <div>
+          <span class="text-emerald-200 block text-[10px] uppercase font-semibold">Not Checked In</span>
+          <span id="stat-uncheck-count" class="font-extrabold text-amber-300 text-base">0</span>
         </div>
         <div class="w-px h-6 bg-white/20"></div>
         <div>
@@ -123,13 +128,16 @@
       </div>
     </div>
 
-    <!-- Search Box & Desk Actions -->
-    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-5 mb-5">
-      <div class="flex items-center justify-between gap-3 mb-2">
-        <label for="search-input" class="block text-[11px] font-bold uppercase tracking-wider text-gray-600">
-          Find Participant by Name or Organization:
-        </label>
-        <button onclick="openWalkinModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-custom-green text-white hover:bg-[#007048] transition shadow-sm">
+    <!-- Search Box, Attendance Filter & Desk Actions -->
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-5 mb-5 space-y-3.5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <label for="search-input" class="block text-[11px] font-bold uppercase tracking-wider text-gray-600">
+            Find Participant:
+          </label>
+          <p class="text-xs text-gray-500">Filter attendees by name, organization, phone or registration ID.</p>
+        </div>
+        <button onclick="openWalkinModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-custom-green text-white hover:bg-[#007048] transition shadow-sm whitespace-nowrap self-start sm:self-auto">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
           </svg>
@@ -146,15 +154,38 @@
         <input 
           type="text" 
           id="search-input"
-          placeholder="Type participant name (e.g. Ibrahim, Amina)..."
+          placeholder="Type participant name, ministry, or ID (e.g. Ibrahim, Amina, FMWRS)..."
           class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A] text-sm transition"
           autofocus
         />
       </div>
 
-      <div class="flex items-center justify-between mt-2 text-xs text-gray-500">
-        <span id="results-count-text">Loading participants...</span>
-        <span class="text-gray-400 text-[11px]">Click Check In to record arrival</span>
+      <!-- Quick Attendance Filter Buttons (All / Checked In / Not Checked In) -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-gray-100">
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <span class="text-xs font-bold text-gray-600 uppercase tracking-wider text-[10px] mr-1">Filter by Status:</span>
+          
+          <button type="button" id="filter-all-btn" class="status-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-[#008C5A] text-white shadow-sm ring-2 ring-[#008C5A]/20" data-filter="all">
+            <span>All Participants</span>
+            <span id="badge-count-all" class="bg-white/20 px-1.5 py-0.2 rounded text-[10px]">0</span>
+          </button>
+
+          <button type="button" id="filter-checked-btn" class="status-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-emerald-800 border border-gray-200" data-filter="checked">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Checked In</span>
+            <span id="badge-count-checked" class="bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded text-[10px]">0</span>
+          </button>
+
+          <button type="button" id="filter-unchecked-btn" class="status-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 bg-gray-100 text-gray-700 hover:bg-amber-50 hover:text-amber-800 border border-gray-200" data-filter="unchecked">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>Not Checked In</span>
+            <span id="badge-count-unchecked" class="bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded text-[10px]">0</span>
+          </button>
+        </div>
+
+        <div class="text-xs text-gray-500">
+          <span id="results-count-text">Loading participants...</span>
+        </div>
       </div>
     </div>
 
@@ -258,17 +289,28 @@
 
     let activeDate = '24 Nov'; // dynamically set in initDateSelector()
     let todayIso = '';
+    let currentStatusFilter = 'all'; // 'all' | 'checked' | 'unchecked'
     let allParticipants = [];
 
     const activeDayDisplay = document.getElementById('active-day-display');
+    const statDayLabel = document.getElementById('stat-day-label');
     const datePillsList = document.getElementById('date-pills-list');
     const searchInput = document.getElementById('search-input');
     const attendeesContainer = document.getElementById('attendees-container');
     const resultsCountText = document.getElementById('results-count-text');
 
     const statDayCount = document.getElementById('stat-day-count');
+    const statUncheckCount = document.getElementById('stat-uncheck-count');
     const statTotalReg = document.getElementById('stat-total-reg');
     const refreshBtn = document.getElementById('refresh-btn');
+
+    const badgeCountAll = document.getElementById('badge-count-all');
+    const badgeCountChecked = document.getElementById('badge-count-checked');
+    const badgeCountUnchecked = document.getElementById('badge-count-unchecked');
+
+    const filterAllBtn = document.getElementById('filter-all-btn');
+    const filterCheckedBtn = document.getElementById('filter-checked-btn');
+    const filterUncheckedBtn = document.getElementById('filter-unchecked-btn');
 
     const feedbackCard = document.getElementById('feedback-card');
     const feedbackIcon = document.getElementById('feedback-icon');
@@ -306,6 +348,9 @@
       const activeObj = EVENT_DAYS.find(d => d.label === activeDate);
       const isToday = activeObj && activeObj.iso === todayIso;
       activeDayDisplay.textContent = isToday ? `${activeDate} (Today)` : `${activeDate}`;
+      if (statDayLabel) {
+        statDayLabel.textContent = isToday ? `Checked In Today (${activeDate})` : `Checked In (${activeDate})`;
+      }
     }
 
     function renderDatePills() {
@@ -390,15 +435,42 @@
 
     // ── Load Stats for Active Date ──────────────────────────────
     async function loadStats() {
+      // Calculate local stats from loaded participants
+      const total = allParticipants.length;
+      let checkedForDay = 0;
+      allParticipants.forEach(p => {
+        if (isCheckedInForDay(p, activeDate)) checkedForDay++;
+      });
+      const uncheckedForDay = Math.max(0, total - checkedForDay);
+
+      if (statTotalReg) statTotalReg.textContent = total;
+      if (statDayCount) statDayCount.textContent = checkedForDay;
+      if (statUncheckCount) statUncheckCount.textContent = uncheckedForDay;
+
+      if (badgeCountAll) badgeCountAll.textContent = total;
+      if (badgeCountChecked) badgeCountChecked.textContent = checkedForDay;
+      if (badgeCountUnchecked) badgeCountUnchecked.textContent = uncheckedForDay;
+
       try {
         const res = await fetch(API_URL + '?action=checkin_stats&day=' + encodeURIComponent(activeDate));
         const data = await res.json();
         if (data && data.success) {
-          statTotalReg.textContent = data.totalRegistered || allParticipants.length;
-          statDayCount.textContent = (data.dayCounts && data.dayCounts[activeDate]) || data.requestedDayCount || 0;
+          const serverTotal = data.totalRegistered || total;
+          const serverDay = (data.dayCounts && data.dayCounts[activeDate]) !== undefined 
+            ? data.dayCounts[activeDate] 
+            : (data.requestedDayCount !== undefined ? data.requestedDayCount : checkedForDay);
+          const serverUnchecked = Math.max(0, serverTotal - serverDay);
+
+          if (statTotalReg) statTotalReg.textContent = serverTotal;
+          if (statDayCount) statDayCount.textContent = serverDay;
+          if (statUncheckCount) statUncheckCount.textContent = serverUnchecked;
+
+          if (badgeCountAll) badgeCountAll.textContent = serverTotal;
+          if (badgeCountChecked) badgeCountChecked.textContent = serverDay;
+          if (badgeCountUnchecked) badgeCountUnchecked.textContent = serverUnchecked;
         }
       } catch (err) {
-        console.warn('Could not load stats:', err);
+        console.warn('Could not load server stats:', err);
       }
     }
     refreshBtn.addEventListener('click', () => {
@@ -467,11 +539,37 @@
       });
     }
 
+    // ── Setup Status Filter Buttons ────────────────────────────
+    function setStatusFilter(filter) {
+      currentStatusFilter = filter;
+      const buttons = [
+        { btn: filterAllBtn, key: 'all' },
+        { btn: filterCheckedBtn, key: 'checked' },
+        { btn: filterUncheckedBtn, key: 'unchecked' }
+      ];
+
+      buttons.forEach(({ btn, key }) => {
+        if (!btn) return;
+        if (key === currentStatusFilter) {
+          btn.className = 'status-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-[#008C5A] text-white shadow-sm ring-2 ring-[#008C5A]/20';
+        } else {
+          btn.className = 'status-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200';
+        }
+      });
+
+      renderParticipants();
+    }
+
+    filterAllBtn?.addEventListener('click', () => setStatusFilter('all'));
+    filterCheckedBtn?.addEventListener('click', () => setStatusFilter('checked'));
+    filterUncheckedBtn?.addEventListener('click', () => setStatusFilter('unchecked'));
+
     // ── Render Participant Cards with Filtering ─────────────────
     function renderParticipants() {
       const query = searchInput.value.trim().toLowerCase();
       
-      const filtered = allParticipants.filter(p => {
+      // Step 1: Text query filtering
+      let matched = allParticipants.filter(p => {
         if (!query) return true;
         const name = (p.fullName || '').toLowerCase();
         const org = (p.organization || '').toLowerCase();
@@ -481,12 +579,24 @@
         return name.includes(query) || org.includes(query) || phone.includes(query) || email.includes(query) || regId.includes(query);
       });
 
-      resultsCountText.textContent = `Showing ${filtered.length} of ${allParticipants.length} registered participant(s)`;
+      // Step 2: Status filtering based on selected day (activeDate)
+      const filtered = matched.filter(p => {
+        const isPresentActive = isCheckedInForDay(p, activeDate);
+        if (currentStatusFilter === 'checked') return isPresentActive;
+        if (currentStatusFilter === 'unchecked') return !isPresentActive;
+        return true;
+      });
+
+      // Update count text with clear filter context
+      let filterLabel = 'all registered';
+      if (currentStatusFilter === 'checked') filterLabel = `checked in for ${activeDate}`;
+      if (currentStatusFilter === 'unchecked') filterLabel = `not checked in for ${activeDate}`;
+      resultsCountText.textContent = `Showing ${filtered.length} of ${allParticipants.length} participant(s) (${filterLabel})`;
 
       if (filtered.length === 0) {
         attendeesContainer.innerHTML = `
-          <div class="text-center py-8 bg-white rounded-xl border border-gray-200 p-6 text-gray-400 text-xs">
-            No matching participants found for "${query}".
+          <div class="text-center py-10 bg-white rounded-xl border border-gray-200 p-6 text-gray-400 text-xs">
+            ${query ? `No matching participants found for "${query}"` : `No participants found`} under "${currentStatusFilter === 'checked' ? 'Checked In' : (currentStatusFilter === 'unchecked' ? 'Not Checked In' : 'All')}" for ${activeDate}.
           </div>
         `;
         return;
@@ -498,7 +608,7 @@
         const card = document.createElement('div');
         card.className = 'border border-gray-200 rounded-xl p-4 bg-white hover:border-gray-300 transition shadow-sm';
 
-        // Check if checked in for the active date (23 Nov)
+        // Check if checked in for the active date (e.g. 23 Nov, 24 Nov)
         const isPresentActive = isCheckedInForDay(person, activeDate);
 
         // Render previously attended date badges (clean, no emojis, deduplicated)
@@ -545,7 +655,7 @@
               ${isPresentActive 
                 ? `<span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                     <svg class="h-3.5 w-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Checked In Today
+                    Checked In (${activeDate})
                    </span>`
                 : `<button class="checkin-btn bg-custom-green hover:bg-[#007048] text-white px-4 py-2 rounded-lg text-xs font-semibold transition shadow-sm flex items-center gap-1.5" data-id="${person.registrationId}" data-name="${person.fullName}">
                     <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
