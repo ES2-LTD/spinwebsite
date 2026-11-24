@@ -86,40 +86,20 @@
     </div>
   </header>
 
-  <!-- EVENT DATES SELECTOR (Nov 23 Enabled, Future Dates Locked) -->
+  <!-- EVENT DATES SELECTOR -->
   <div class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-30">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-2.5">
       <div class="flex items-center justify-between gap-2 mb-2 text-xs">
         <span class="font-bold text-gray-700 uppercase tracking-wider text-[11px]">Training Schedule Dates:</span>
-        <span class="text-gray-400 text-[11px] flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-          </svg>
-          Future dates locked until their respective days
+        <span class="text-gray-500 text-[11px] flex items-center gap-1 font-medium">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Select an available day to take attendance
         </span>
       </div>
 
-      <!-- Quick Date Pills: 23 Nov active, 24 Nov - 5 Dec disabled -->
+      <!-- Quick Date Pills (Dynamically rendered based on current date) -->
       <div class="flex items-center gap-1.5 overflow-x-auto pb-1" id="date-pills-list">
-        <!-- 23 Nov: TODAY (Active & Enabled) -->
-        <button data-date="23 Nov" class="date-pill active py-1.5 px-3 rounded-lg border border-custom-green text-xs font-bold text-white bg-custom-green transition whitespace-nowrap flex items-center gap-1">
-          <span>23 Nov</span>
-          <span class="text-[10px] bg-white/20 px-1 py-0.2 rounded font-normal">Today</span>
-        </button>
-
-        <!-- Future Dates: LOCKED / DISABLED -->
-        <button data-date="24 Nov" disabled title="Locked: Available on 24 November" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">24 Nov</button>
-        <button data-date="25 Nov" disabled title="Locked: Available on 25 November" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">25 Nov</button>
-        <button data-date="26 Nov" disabled title="Locked: Available on 26 November" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">26 Nov</button>
-        <button data-date="27 Nov" disabled title="Locked: Available on 27 November" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">27 Nov</button>
-        <button data-date="28 Nov" disabled title="Locked: Available on 28 November" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">28 Nov</button>
-        <button data-date="29 Nov" disabled title="Locked: Available on 29 November" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">29 Nov</button>
-        <button data-date="30 Nov" disabled title="Locked: Available on 30 November" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">30 Nov</button>
-        <button data-date="01 Dec" disabled title="Locked: Available on 01 December" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">01 Dec</button>
-        <button data-date="02 Dec" disabled title="Locked: Available on 02 December" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">02 Dec</button>
-        <button data-date="03 Dec" disabled title="Locked: Available on 03 December" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">03 Dec</button>
-        <button data-date="04 Dec" disabled title="Locked: Available on 04 December" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">04 Dec</button>
-        <button data-date="05 Dec" disabled title="Locked: Available on 05 December" class="date-pill py-1.5 px-3 rounded-lg border border-gray-200 text-xs font-medium text-gray-400 bg-gray-100 opacity-50 cursor-not-allowed whitespace-nowrap">05 Dec</button>
+        <!-- Rendered by JS -->
       </div>
     </div>
   </div>
@@ -143,11 +123,19 @@
       </div>
     </div>
 
-    <!-- Search Box -->
+    <!-- Search Box & Desk Actions -->
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-5 mb-5">
-      <label for="search-input" class="block text-[11px] font-bold uppercase tracking-wider text-gray-600 mb-1.5">
-        Find Participant by Name or Organization:
-      </label>
+      <div class="flex items-center justify-between gap-3 mb-2">
+        <label for="search-input" class="block text-[11px] font-bold uppercase tracking-wider text-gray-600">
+          Find Participant by Name or Organization:
+        </label>
+        <button onclick="openWalkinModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-custom-green text-white hover:bg-[#007048] transition shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+          </svg>
+          Quick Register &amp; Check-In
+        </button>
+      </div>
 
       <div class="relative">
         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
@@ -179,6 +167,71 @@
       </div>
     </div>
 
+    <!-- Quick Walk-in Registration Modal for Desk Officer -->
+    <div id="walkin-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm p-4 flex items-center justify-center overflow-y-auto">
+      <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative" onclick="event.stopPropagation()">
+        <div class="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
+          <div>
+            <h3 class="font-extrabold text-base text-gray-900">Desk Registration &amp; Check-In</h3>
+            <p class="text-xs text-gray-500">Register an unlisted attendee and instantly mark attendance for today.</p>
+          </div>
+          <button onclick="closeWalkinModal()" class="text-gray-400 hover:text-gray-700 text-xl font-bold p-1">
+            &times;
+          </button>
+        </div>
+
+        <form id="walkin-form" class="space-y-3.5 text-xs">
+          <div>
+            <label class="block font-semibold text-gray-700 uppercase tracking-wider mb-1">
+              Full Name <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="walkin-name" required placeholder="e.g. Engr. Mustapha Dan Malam" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-[#008C5A] focus:outline-none" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Designation <span class="text-red-500">*</span>
+              </label>
+              <input type="text" id="walkin-designation" required placeholder="e.g. Project Officer" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-[#008C5A] focus:outline-none" />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Organization <span class="text-red-500">*</span>
+              </label>
+              <input type="text" id="walkin-org" required placeholder="e.g. Kano SPIU / FMWRS" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-[#008C5A] focus:outline-none" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Email Address <span class="text-red-500">*</span>
+              </label>
+              <input type="email" id="walkin-email" required placeholder="officer@state.gov.ng" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-[#008C5A] focus:outline-none" />
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Phone Number <span class="text-gray-400 font-normal">(Optional)</span>
+              </label>
+              <input type="tel" id="walkin-phone" placeholder="0803 000 0000" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:ring-2 focus:ring-[#008C5A] focus:outline-none" />
+            </div>
+          </div>
+
+          <div id="walkin-error" class="hidden p-2.5 rounded bg-red-50 border border-red-200 text-red-700 text-xs"></div>
+
+          <div class="pt-2 flex items-center justify-end gap-2">
+            <button type="button" onclick="closeWalkinModal()" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold">
+              Cancel
+            </button>
+            <button type="submit" id="walkin-submit-btn" class="px-5 py-2 rounded-lg bg-custom-green hover:bg-[#007048] text-white font-bold flex items-center gap-1.5 shadow-sm">
+              <span>Register &amp; Check-In</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </main>
 
   <script>
@@ -186,11 +239,29 @@
       ? window.SPIN_MULTIDAY_CONFIG.API_URL 
       : (window.SPIN_WORKSHOP_CONFIG ? window.SPIN_WORKSHOP_CONFIG.API_URL : '');
 
-    // 23 Nov is the only enabled date today
-    const activeDate = '23 Nov';
+    // Event date definition (23 Nov - 5 Dec 2026)
+    const EVENT_DAYS = [
+      { label: '23 Nov', iso: '2026-11-23' },
+      { label: '24 Nov', iso: '2026-11-24' },
+      { label: '25 Nov', iso: '2026-11-25' },
+      { label: '26 Nov', iso: '2026-11-26' },
+      { label: '27 Nov', iso: '2026-11-27' },
+      { label: '28 Nov', iso: '2026-11-28' },
+      { label: '29 Nov', iso: '2026-11-29' },
+      { label: '30 Nov', iso: '2026-11-30' },
+      { label: '01 Dec', iso: '2026-12-01' },
+      { label: '02 Dec', iso: '2026-12-02' },
+      { label: '03 Dec', iso: '2026-12-03' },
+      { label: '04 Dec', iso: '2026-12-04' },
+      { label: '05 Dec', iso: '2026-12-05' }
+    ];
+
+    let activeDate = '24 Nov'; // dynamically set in initDateSelector()
+    let todayIso = '';
     let allParticipants = [];
 
     const activeDayDisplay = document.getElementById('active-day-display');
+    const datePillsList = document.getElementById('date-pills-list');
     const searchInput = document.getElementById('search-input');
     const attendeesContainer = document.getElementById('attendees-container');
     const resultsCountText = document.getElementById('results-count-text');
@@ -203,6 +274,98 @@
     const feedbackIcon = document.getElementById('feedback-icon');
     const feedbackTitle = document.getElementById('feedback-title');
     const feedbackSubtitle = document.getElementById('feedback-subtitle');
+
+    // ── Helper: Format Today's ISO in WAT (UTC+1) ─────────────────
+    function getTodayWAT() {
+      const now = new Date();
+      // Calculate WAT (UTC+1)
+      const watTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3600000));
+      const yr = watTime.getFullYear();
+      const mo = String(watTime.getMonth() + 1).padStart(2, '0');
+      const da = String(watTime.getDate()).padStart(2, '0');
+      return `${yr}-${mo}-${da}`;
+    }
+
+    // ── Initialize Dynamic Date Selector ────────────────────────
+    function initDateSelector() {
+      todayIso = getTodayWAT();
+
+      // Find matching today, or fallback to latest available date
+      const todayMatch = EVENT_DAYS.find(d => d.iso === todayIso);
+      if (todayMatch) {
+        activeDate = todayMatch.label;
+      } else {
+        // If before event, pick first; if after event, pick today or latest unlocked
+        const pastOrToday = EVENT_DAYS.filter(d => d.iso <= todayIso);
+        if (pastOrToday.length > 0) {
+          activeDate = pastOrToday[pastOrToday.length - 1].label;
+        } else {
+          activeDate = EVENT_DAYS[0].label;
+        }
+      }
+
+      renderDatePills();
+      updateActiveDayDisplay();
+    }
+
+    function updateActiveDayDisplay() {
+      const activeObj = EVENT_DAYS.find(d => d.label === activeDate);
+      const isToday = activeObj && activeObj.iso === todayIso;
+      activeDayDisplay.textContent = isToday ? `${activeDate} (Today)` : `${activeDate}`;
+    }
+
+    function renderDatePills() {
+      if (!datePillsList) return;
+      datePillsList.innerHTML = '';
+
+      EVENT_DAYS.forEach(d => {
+        const isToday = d.iso === todayIso;
+        const isUnlocked = d.iso <= todayIso;
+        const isSelected = d.label === activeDate;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.date = d.label;
+        btn.dataset.iso = d.iso;
+
+        let baseClasses = 'px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 ';
+
+        if (isSelected) {
+          baseClasses += 'bg-[#008C5A] text-white shadow-sm ring-2 ring-[#008C5A]/30 ';
+        } else if (isUnlocked) {
+          baseClasses += 'bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-[#008C5A] border border-gray-200 ';
+        } else {
+          baseClasses += 'bg-gray-50 text-gray-400 border border-gray-100 opacity-60 cursor-not-allowed ';
+          btn.title = `Locked: Scheduled for ${d.label} 2026`;
+        }
+
+        btn.className = baseClasses;
+
+        let content = `<span>${d.label}</span>`;
+        if (isToday) {
+          content += `<span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider ${isSelected ? 'bg-white/25 text-white' : 'bg-emerald-100 text-emerald-800'}">Today</span>`;
+        } else if (!isUnlocked) {
+          content += `<svg class="h-3 w-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>`;
+        }
+
+        btn.innerHTML = content;
+
+        if (isUnlocked) {
+          btn.addEventListener('click', () => {
+            if (activeDate === d.label) return;
+            activeDate = d.label;
+            renderDatePills();
+            updateActiveDayDisplay();
+            renderParticipants();
+            loadStats();
+          });
+        } else {
+          btn.disabled = true;
+        }
+
+        datePillsList.appendChild(btn);
+      });
+    }
 
     // ── Load All Participants from Server ───────────────────────
     async function fetchParticipants() {
@@ -502,8 +665,80 @@
       feedbackCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
+    // ── Quick Walk-In Registration Handlers ────────────────────
+    function openWalkinModal() {
+      document.getElementById('walkin-modal').classList.remove('hidden');
+      document.getElementById('walkin-name').focus();
+    }
+
+    function closeWalkinModal() {
+      document.getElementById('walkin-modal').classList.add('hidden');
+      document.getElementById('walkin-form').reset();
+      document.getElementById('walkin-error').classList.add('hidden');
+    }
+
+    document.getElementById('walkin-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('walkin-name').value.trim();
+      const designation = document.getElementById('walkin-designation').value.trim();
+      const org = document.getElementById('walkin-org').value.trim();
+      const email = document.getElementById('walkin-email').value.trim();
+      const phone = document.getElementById('walkin-phone').value.trim() || 'N/A';
+      const btn = document.getElementById('walkin-submit-btn');
+      const errEl = document.getElementById('walkin-error');
+
+      if (!name || !designation || !org || !email) {
+        errEl.textContent = 'Please fill out all required fields.';
+        errEl.classList.remove('hidden');
+        return;
+      }
+
+      errEl.classList.add('hidden');
+      btn.disabled = true;
+      btn.innerHTML = `<svg class="animate-spin h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> <span>Registering...</span>`;
+
+      try {
+        // Step 1: Register
+        const regParams = new URLSearchParams({
+          action: 'register',
+          fullName: name,
+          designation: designation,
+          organization: org,
+          email: email,
+          phone: phone
+        }).toString();
+
+        const regRes = await fetch(API_URL + '?' + regParams);
+        const regData = await regRes.json();
+
+        if (regData.success) {
+          const regId = regData.id;
+
+          // Step 2: Automatically check-in for activeDate (today)
+          const checkinRes = await fetch(API_URL + `?action=checkin_confirm&registrationId=${encodeURIComponent(regId)}&day=${encodeURIComponent(activeDate)}`);
+          const checkinData = await checkinRes.json();
+
+          closeWalkinModal();
+          showToast('success', 'Registered & Checked In', `${name} (${org}) registered and marked present for today!`);
+
+          // Refresh participant list
+          await fetchParticipants();
+        } else {
+          errEl.textContent = regData.message || 'Could not register participant.';
+          errEl.classList.remove('hidden');
+        }
+      } catch (err) {
+        errEl.textContent = 'Network error. Please try again.';
+        errEl.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Register &amp; Check-In</span>`;
+      }
+    });
+
     // Initialize
     window.addEventListener('DOMContentLoaded', () => {
+      initDateSelector();
       fetchParticipants();
     });
   </script>

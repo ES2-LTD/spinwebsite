@@ -219,7 +219,7 @@ function doGet(e) {
 // ── 1. REGISTRATION HANDLER (NO EMAIL REQUIREMENT) ────────────
 
 function handleRegistration(params) {
-  var requiredFields = ['fullName', 'designation', 'organization', 'email', 'phone'];
+  var requiredFields = ['fullName', 'designation', 'organization', 'email'];
   for (var i = 0; i < requiredFields.length; i++) {
     if (!params[requiredFields[i]] || String(params[requiredFields[i]]).trim() === '') {
       return jsonResponse({ success: false, message: 'Please fill all required fields.' });
@@ -246,6 +246,7 @@ function handleRegistration(params) {
   var registrationId = generateRegistrationId(regSheet);
   var now = new Date();
   var timestamp = Utilities.formatDate(now, Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm:ss');
+  var phoneVal = params.phone ? String(params.phone).trim() : '';
 
   regSheet.appendRow([
     timestamp,
@@ -254,7 +255,7 @@ function handleRegistration(params) {
     String(params.designation).trim(),
     String(params.organization).trim(),
     email,
-    String(params.phone).trim(),
+    phoneVal,
     0, // Total Days Attended
     '' // Last Check-in
   ]);
