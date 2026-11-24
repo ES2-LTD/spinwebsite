@@ -88,6 +88,7 @@
         <a href="/news" class="text-white border-b-2 border-white px-1.5">News</a>
         <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Participating States</a>
         <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
+        <a href="/mission-agenda.html" class="text-[#aaff33] hover:text-white border-b-2 border-transparent hover:border-white px-1.5 font-bold">Mission Agenda</a>
         <a href="/project" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
         <a href="/resources" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
         <a href="/grievance" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Grievance</a>
@@ -129,6 +130,7 @@
         <a href="/news" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">News</a>
         <a href="/participating-states" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Participating States</a>
         <a href="/gallery" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Gallery</a>
+        <a href="/mission-agenda.html" class="block py-2 rounded font-bold text-[#aaff33] focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Mission Agenda (Nov–Dec 2026)</a>
         <a href="/project" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Projects</a>
         <a href="/resources" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Resources</a>
         <a href="/grievance" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Grievance</a>
@@ -157,6 +159,44 @@
 
       <!-- News Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- ═══════ Card 0: 2026 World Bank Implementation Support Mission Opens in Abuja (November 23, 2026) ═══════ -->
+        <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <!-- Card Image -->
+          <div class="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+            <img src="images/november2026/20261124_103613.jpg" alt="2026 World Bank Implementation Support Mission Opens in Abuja" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#008C5A] text-white text-xs font-bold uppercase tracking-wider shadow">
+              FPMU &bull; Abuja
+            </span>
+          </div>
+
+          <!-- Card Body -->
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <!-- Date -->
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 mb-2">
+                <svg class="h-3.5 w-3.5 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                November 23, 2026
+              </div>
+
+              <!-- Headline -->
+              <h2 class="text-lg font-extrabold text-gray-900 group-hover:text-[#008C5A] transition-colors leading-snug mb-3">
+                2026 WORLD BANK IMPLEMENTATION SUPPORT MISSION FOR SPIN PROJECT OPENS IN ABUJA
+              </h2>
+
+              <!-- Excerpt -->
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+                The 2026 World Bank Implementation Support Mission for the Sustainable Power and Irrigation for Nigeria (SPIN) Project officially opened today in Abuja, bringing together key stakeholders, participating states, and the World Bank technical team.
+              </p>
+            </div>
+
+            <!-- Modal Trigger Button -->
+            <button onclick="openNewsModal('modal-mission-opening')" class="mt-2 w-full py-2.5 px-4 rounded-xl bg-gray-100 hover:bg-[#008C5A] hover:text-white text-[#008C5A] font-bold text-sm transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
+              Read Full News
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
 
         <!-- ═══════ Card 1: Yobe Steering & Technical Committees Inauguration (November 2026) ═══════ -->
         <article class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
@@ -315,6 +355,112 @@
     </div>
 
     <!-- ═══════════════════════ MODALS / POPUPS ═══════════════════════ -->
+
+    <!-- Modal: 2026 World Bank Implementation Support Mission Opening -->
+    <div id="modal-mission-opening" class="news-modal fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm p-4 sm:p-6 md:p-10 flex items-center justify-center overflow-y-auto" onclick="handleBackdropClick(event, 'modal-mission-opening')">
+      <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative animate-fadeIn" onclick="event.stopPropagation()">
+        <!-- Modal Header with Image -->
+        <div class="relative aspect-[16/8] sm:aspect-[21/9] w-full overflow-hidden bg-gray-900 flex-shrink-0">
+          <img src="images/november2026/20261124_103613.jpg" alt="2026 World Bank Implementation Support Mission Opening Session in Abuja" class="w-full h-full object-cover">
+          <button onclick="closeNewsModal('modal-mission-opening')" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center text-xl transition-all focus:outline-none" aria-label="Close modal">
+            &times;
+          </button>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-end p-6 sm:p-8">
+            <span class="px-3 py-1 rounded-full bg-[#aaff33] text-gray-950 text-xs font-bold uppercase tracking-wider">
+              November 23, 2026 &bull; FPMU, Abuja
+            </span>
+          </div>
+        </div>
+
+        <!-- Modal Scrollable Content -->
+        <div class="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-6">
+          <div>
+            <div class="inline-block px-3 py-1 rounded-md bg-emerald-50 text-[#008C5A] border border-emerald-200 text-xs font-bold uppercase tracking-wider mb-2">
+              Press Release
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-3">
+              2026 WORLD BANK IMPLEMENTATION SUPPORT MISSION FOR SPIN PROJECT OPENS IN ABUJA
+            </h3>
+            <p class="text-sm text-gray-500 italic">
+              By <span class="font-semibold not-italic text-gray-800">Terhemen Oraduen</span>, Communication Officer — SPIN-FPMU
+            </p>
+          </div>
+
+          <div class="prose max-w-none text-gray-700 leading-relaxed text-sm sm:text-base space-y-4">
+            <p class="text-lg font-medium text-gray-800 leading-relaxed">
+              The 2026 World Bank Implementation Support Mission for the Sustainable Power and Irrigation for Nigeria (SPIN) Project officially opened today in Abuja.
+            </p>
+
+            <p>
+              The high-level meeting brings together key stakeholders, including representatives from participating states, the World Bank technical team, the Federal Project Management Unit (FPMU), and officials from the Federal Ministry of Water Resources and Sanitation.
+            </p>
+
+            <blockquote class="border-l-4 border-[#008C5A] pl-4 py-3 italic font-medium bg-green-50 text-gray-900 rounded-r-lg my-4">
+              “The mission is designed to review implementation progress reports and identify key areas for improvement. These evaluations are crucial to ensuring the project achieves its core objectives and accelerates overall delivery.”
+              <span class="block not-italic font-bold text-xs text-[#008C5A] mt-2">— Engr. Ipinlaye Olaiya, National Project Coordinator, SPIN Project</span>
+            </blockquote>
+
+            <p>
+              Speaking at the opening ceremony, the SPIN National Project Coordinator, Engr. Ipinlaye Olaiya, stated that the mission provides an essential collaborative platform to appraise project milestones, review implementation progress reports, and identify key operational areas for sustained performance and improvement.
+            </p>
+
+            <p>
+              He emphasized that these ongoing evaluations and technical assessments are vital to ensuring the project achieves its core development objectives, fulfills World Bank and national benchmarks, and accelerates overall delivery across all targeted intervention areas.
+            </p>
+
+            <p>
+              The opening session also featured comprehensive technical presentations delivered by the World Bank team. Over the course of the multi-day mission, technical discussions will focus on critical project components—including irrigation infrastructure, hydropower, and dam safety—alongside interactive question-and-answer and working sessions with federal and state teams.
+            </p>
+
+            <!-- Mission Photo Gallery -->
+            <div class="mt-8 pt-6 border-t border-gray-100">
+              <h4 class="text-sm font-bold uppercase tracking-wider text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="h-4 w-4 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Mission Session Photo Gallery
+              </h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                <div class="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 aspect-[4/3] group">
+                  <img src="images/november2026/20261124_103613.jpg" alt="World Bank Mission opening technical presentation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+                <div class="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 aspect-[4/3] group">
+                  <img src="images/november2026/20261124_103626.jpg" alt="Delegates and participants during technical presentation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+                <div class="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 aspect-[4/3] group">
+                  <img src="images/november2026/20261124_103640.jpg" alt="World Bank Mission presentation hall and screen session" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+                <div class="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 aspect-[4/3] group">
+                  <img src="images/november2026/20261124_103711.jpg" alt="FPMU and State Project representatives at Abuja Mission" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+                <div class="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 aspect-[4/3] group">
+                  <img src="images/november2026/20261123_144126.jpg" alt="Session opening and technical discourse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+                <div class="rounded-xl overflow-hidden border border-gray-200 bg-gray-100 aspect-[4/3] group">
+                  <img src="images/november2026/20261123_144139.jpg" alt="World Bank and FPMU teams engaged in interactive deliberations" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Link to Mission Agenda -->
+            <div class="mt-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div>
+                <h5 class="text-xs font-bold uppercase tracking-wider text-emerald-900">Program of Events &amp; Schedule</h5>
+                <p class="text-xs text-emerald-700 mt-0.5">View the digitized 23 Nov – 5 Dec 2026 World Bank Mission Schedule.</p>
+              </div>
+              <a href="/mission-agenda.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-custom-green hover:bg-[#007048] text-white text-xs font-bold transition shadow-sm whitespace-nowrap">
+                <span>View Mission Agenda</span>
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 flex justify-between items-center text-xs text-gray-500">
+            <span>Published by: Terhemen Oraduen, Communication Officer, SPIN-FPMU</span>
+            <button onclick="closeNewsModal('modal-mission-opening')" class="px-5 py-2 rounded-xl bg-[#008C5A] text-white font-bold hover:bg-[#007048] transition">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Modal 0: Yobe Steering & Technical Committees -->
     <div id="modal-yobe" class="news-modal fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm p-4 sm:p-6 md:p-10 flex items-center justify-center overflow-y-auto" onclick="handleBackdropClick(event, 'modal-yobe')">
