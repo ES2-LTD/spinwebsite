@@ -686,13 +686,13 @@
               const result = await res.json();
 
               if (result.success) {
-                showToast('success', `Check-in Recorded`, `${person.fullName} has been checked in for today.`);
+                showToast('success', `Check-in Recorded`, `${person.fullName} has been checked in for ${activeDate}.`);
                 if (!person.attendedDays) person.attendedDays = [];
                 person.attendedDays.push({ day: activeDate, checkinTime: result.checkinTime });
                 renderParticipants();
                 loadStats();
               } else if (result.alreadyCheckedIn) {
-                showToast('warning', `Already Checked In`, `${person.fullName} is already marked present for today (${activeDate}).`);
+                showToast('warning', `Already Checked In`, `${person.fullName} is already marked present for ${activeDate}.`);
                 if (!person.attendedDays) person.attendedDays = [];
                 person.attendedDays.push({ day: activeDate, checkinTime: result.checkinTime || '' });
                 renderParticipants();
