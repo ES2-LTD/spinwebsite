@@ -456,9 +456,20 @@
         const data = await res.json();
         if (data && data.success) {
           const serverTotal = data.totalRegistered || total;
-          const serverDay = (data.dayCounts && data.dayCounts[activeDate]) !== undefined 
-            ? data.dayCounts[activeDate] 
-            : (data.requestedDayCount !== undefined ? data.requestedDayCount : checkedForDay);
+          const targetNorm = normalizeDayString(activeDate);
+          let serverDay = checkedForDay;
+
+          if (data.dayCounts) {
+            for (const [k, v] of Object.entries(data.dayCounts)) {
+              if (normalizeDayString(k) === targetNorm) {
+                serverDay = v;
+                break;
+              }
+            }
+          } else if (data.requestedDayCount && data.requestedDayCount > 0) {
+            serverDay = data.requestedDayCount;
+          }
+
           const serverUnchecked = Math.max(0, serverTotal - serverDay);
 
           if (statTotalReg) statTotalReg.textContent = serverTotal;
