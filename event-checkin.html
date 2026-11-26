@@ -490,8 +490,22 @@
 
     // ── Helper Date Normalizers ─────────────────────────────────
     function normalizeDayString(val, checkinTime) {
-      if (!val) return '';
-      let s = String(val).trim().replace(/^'/, '');
+      if (val) {
+        let s = String(val).trim().replace(/^'/, '');
+        if (s.includes('T') || (s.includes('-') && s.length >= 10) || s.includes('GMT')) {
+          try {
+            const d = new Date(s);
+            if (!isNaN(d.getTime())) {
+              const watDate = new Date(d.getTime() + (3600 * 1000));
+              const dayWat = watDate.getUTCDate();
+              const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+              return ((dayWat < 10 ? '0' + dayWat : dayWat) + months[watDate.getUTCMonth()]).toLowerCase();
+            }
+          } catch(e) {}
+        }
+        const cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (cleaned) return cleaned;
+      }
       if (checkinTime) {
         const m = String(checkinTime).match(/\d{4}-(\d{2})-(\d{2})/);
         if (m) {
@@ -501,23 +515,25 @@
           return (day + (months[monthIdx] || 'nov')).toLowerCase();
         }
       }
-      if (s.includes('T') || (s.includes('-') && s.length >= 10)) {
-        try {
-          const d = new Date(s);
-          if (!isNaN(d.getTime())) {
-            const watDate = new Date(d.getTime() + (3600 * 1000));
-            const dayWat = watDate.getUTCDate();
-            const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
-            return ((dayWat < 10 ? '0' + dayWat : dayWat) + months[watDate.getUTCMonth()]).toLowerCase();
-          }
-        } catch(e) {}
-      }
-      return s.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return '';
     }
 
     function formatBadgeDay(val, checkinTime) {
-      if (!val) return 'Day';
-      let s = String(val).trim().replace(/^'/, '');
+      if (val) {
+        let s = String(val).trim().replace(/^'/, '');
+        if (s.includes('T') || (s.includes('-') && s.length >= 10) || s.includes('GMT')) {
+          try {
+            const d = new Date(s);
+            if (!isNaN(d.getTime())) {
+              const watDate = new Date(d.getTime() + (3600 * 1000));
+              const dayWat = watDate.getUTCDate();
+              const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+              return dayWat + ' ' + (months[watDate.getUTCMonth()] || 'Nov');
+            }
+          } catch(e) {}
+        }
+        if (s) return s;
+      }
       if (checkinTime) {
         const m = String(checkinTime).match(/\d{4}-(\d{2})-(\d{2})/);
         if (m) {
@@ -527,18 +543,7 @@
           return day + ' ' + (months[monthIdx] || 'Nov');
         }
       }
-      if (s.includes('T') || (s.includes('-') && s.length >= 10)) {
-        try {
-          const d = new Date(s);
-          if (!isNaN(d.getTime())) {
-            const watDate = new Date(d.getTime() + (3600 * 1000));
-            const dayWat = watDate.getUTCDate();
-            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-            return dayWat + ' ' + (months[watDate.getUTCMonth()] || 'Nov');
-          }
-        } catch(e) {}
-      }
-      return s;
+      return 'Day';
     }
 
     function isCheckedInForDay(person, targetDay) {
